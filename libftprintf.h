@@ -48,7 +48,7 @@ typedef struct		s_spec_elem
 	char 			cletter;
 }					t_spec_elem;
 
-typedef void		(*t_convert)(char **res, char *smod, va_list ap);
+typedef void		(*t_convert)(char **str, char *smod, va_list ap);
 
 typedef struct 		s_conv
 {
@@ -71,10 +71,10 @@ int					is_flag(char c);
 int					is_modifier(char c);
 
 t_conv				*init_conversion(void);
-void				test(char **res, char *smod, va_list ap);
-void				convert_chr(char **res, char *smod, va_list ap);
-void				convert_str(char **res, char *smod, va_list ap);
-void				convert_int(char **res, char *smod, va_list ap);
+void				test(char **str, char *smod, va_list ap);
+void				convert_chr(char **str, char *smod, va_list ap);
+void				convert_str(char **str, char *smod, va_list ap);
+void				convert_int(char **str, char *smod, va_list ap);
 
 //////	for testing	//////
 void 				p(t_spec_elem *spec);

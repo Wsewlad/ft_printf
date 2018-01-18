@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prntf_numb.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfil <vfil@student.unit.ua>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 17:40:38 by vfil              #+#    #+#             */
-/*   Updated: 2018/01/12 17:40:43 by vfil             ###   ########.fr       */
+/*   Created: 2018/01/12 17:43:08 by vfil              #+#    #+#             */
+/*   Updated: 2018/01/12 17:43:10 by vfil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	convert_int(char **str, char *smod, va_list ap)
+int		main(void)
 {
-	char	*buf;
-	char 	*buf2;
-	t_conversions	cl;
+    ft_printf("ft_printf %d\n", 10);
+    //system("leaks a.out");
+    printf("printf %.d\n", 1);
 
-	buf2 = smod;
-	if ((cl.d = va_arg(ap, int)))
-	{
-		ft_strjoin_free(str, buf = ft_itoa(cl.d));
-		ft_strdel(&buf);
-	}
+    return (0);
 }
-

@@ -18,16 +18,20 @@ int		prntf_parse(char **res, char *format, va_list ap)
 	int				step;
 	int				i;
 	t_conv			*conversion;
+	char 			*str;
 
 	step = check_init_specification(format, &spec);
 	conversion = init_conversion();
+	str = ft_strnew(0);
 	i = 0;
 	while (i < 14)
 	{
 		if (conversion[i].letter == spec.cletter)
-			conversion[i].make(res, spec.smod, ap);
+			conversion[i].make(&str, spec.smod, ap);
 		i++;
 	}
+	ft_strjoin_free(res, str);
+	ft_strdel(&str);
 	ft_memdel((void**)&conversion);
 	return (step);
 }
