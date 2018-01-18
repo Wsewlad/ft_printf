@@ -19,8 +19,14 @@
 
 typedef union		u_conversions
 {
-	unsigned char	c;
+	char			c;
 	int				d;
+	long			ld;
+	long long		lld;
+	short			hd;
+	unsigned int	u;
+	unsigned short	hu;
+	unsigned long	lu;
 	char			*s;
 }					t_conversions;
 

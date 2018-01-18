@@ -47,10 +47,22 @@ void	check_init_specifier(char *format, int *step, t_spec_elem *spec)
 t_conv	*init_conversion(void)
 {
 	t_conv			*res;
-	const t_conv	conversion[] = {{'s', &convert_str}, {'S', &convert_str},\
-	{'p', &test}, {'d', &convert_int}, {'D', &convert_int}, {'O', &test},\
-	{'i', &convert_int}, {'o', &test}, {'u', &test}, {'U', &test},\
-	{'x', &test}, {'X', &test}, {'c', &convert_chr}, {'C', &convert_chr}};
+	const t_conv	conversion[] = {
+			{'s', &convert_str},
+			{'S', &convert_str},
+			{'p', &test},
+			{'d', &convert_int},
+			{'D', &convert_int},
+			{'i', &convert_int},
+			{'o', &test},
+			{'O', &test},
+			{'u', &test},
+			{'U', &test},
+			{'x', &test},
+			{'X', &test},
+			{'c', &convert_chr},
+			{'C', &convert_chr}
+	};
 
 	res = malloc(sizeof(conversion));
 	memcpy(res, conversion, sizeof(conversion));

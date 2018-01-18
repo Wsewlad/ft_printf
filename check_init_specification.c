@@ -68,7 +68,7 @@ void	check_init_fwidth(char *format, int *step, t_spec_elem *spec)
 
 	in = 0;
 	format += *step;
-	if (*format != 0 && ft_atoi(format) != 0)
+	if (*format != '0' && *format != '-' && ft_atoi(format) != 0)
 	{
 		spec->fwidth = ft_atoi(format);
 		in = 1;
@@ -90,8 +90,9 @@ void	check_init_precision(char *format, int *step, t_spec_elem *spec)
 	{
 		format++;
 		(*step)++;
-		spec->precision = ft_atoi(format);
-		while (*format >= '0' && *format <= '9')
+		if (*format != '-')
+			spec->precision = ft_atoi(format);
+		while(*format >= '0' && *format <= '9')
 		{
 			format++;
 			(*step)++;
