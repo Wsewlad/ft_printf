@@ -24,6 +24,8 @@ typedef union		u_conversions
 	long			ld;
 	long long		lld;
 	short			hd;
+	signed char		hhd;
+	intmax_t		jd;
 	unsigned int	u;
 	unsigned short	hu;
 	unsigned long	lu;
@@ -48,7 +50,7 @@ typedef struct		s_spec_elem
 	char 			cletter;
 }					t_spec_elem;
 
-typedef void		(*t_convert)(char **str, char *smod, va_list ap);
+typedef void		(*t_convert)(char **str, t_spec_elem spec, va_list ap);
 
 typedef struct 		s_conv
 {
@@ -71,10 +73,10 @@ int					is_flag(char c);
 int					is_modifier(char c);
 
 t_conv				*init_conversion(void);
-void				test(char **str, char *smod, va_list ap);
-void				convert_chr(char **str, char *smod, va_list ap);
-void				convert_str(char **str, char *smod, va_list ap);
-void				convert_int(char **str, char *smod, va_list ap);
+void				test(char **str, t_spec_elem spec, va_list ap);
+void				convert_chr(char **str, t_spec_elem spec, va_list ap);
+void				convert_str(char **str, t_spec_elem spec, va_list ap);
+void				convert_int(char **str, t_spec_elem spec, va_list ap);
 
 //////	for testing	//////
 void 				p(t_spec_elem *spec);

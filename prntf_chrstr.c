@@ -12,32 +12,26 @@
 
 #include "libftprintf.h"
 
-void	test(char **str, char *smod, va_list ap)
+void	test(char **str, t_spec_elem spec, va_list ap)
 {
-	char	*buf;
 	t_conversions	cl;
 
-	buf = smod;
-	if ((cl.s = va_arg(ap, char *)))
+	if ((cl.s = va_arg(ap, char *)) && spec.cletter)
 		ft_strjoin_free(str, "_test_");
 }
 
-void	convert_chr(char **str, char *smod, va_list ap)
+void	convert_chr(char **str, t_spec_elem spec, va_list ap)
 {
-	char	*buf;
 	t_conversions	cl;
 
-	buf = smod;
-	if ((cl.c = (char)va_arg(ap, int)))
+	if ((cl.c = (char)va_arg(ap, int)) && spec.cletter)
 		ft_chrjoin_free(str, cl.c);
 }
 
-void	convert_str(char **str, char *smod, va_list ap)
+void	convert_str(char **str, t_spec_elem spec, va_list ap)
 {
-	char	*buf;
 	t_conversions	cl;
 
-	buf = smod;
-	if ((cl.s = va_arg(ap, char *)))
+	if ((cl.s = va_arg(ap, char *)) && spec.cletter)
 		ft_strjoin_free(str, cl.s);
 }

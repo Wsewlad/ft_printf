@@ -93,5 +93,6 @@ void				ft_lstdelcont(void *content, size_t size);
 char				*ft_strrev(char *str);
 char				*ft_itoa_base(int n, int base);
 int					get_next_line(const int fd, char **line);
+char				*ft_itoa_longlong(long long n);
 
 #endif

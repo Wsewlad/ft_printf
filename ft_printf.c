@@ -27,7 +27,7 @@ int		prntf_parse(char **res, char *format, va_list ap)
 	while (i < 14)
 	{
 		if (conversion[i].letter == spec.cletter)
-			conversion[i].make(&str, spec.smod, ap);
+			conversion[i].make(&str, spec, ap);
 		i++;
 	}
 	ft_strjoin_free(res, str);
