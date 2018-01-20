@@ -35,3 +35,16 @@ void	convert_str(char **str, t_spec_elem spec, va_list ap)
 	if ((cl.s = va_arg(ap, char *)) && spec.cletter)
 		ft_strjoin_free(str, cl.s);
 }
+
+void	convert_ptr(char **str, t_spec_elem spec, va_list ap)
+{
+	t_conversions	cl;
+	char 			*buf;
+
+	if ((cl.ld = va_arg(ap, long int)) && spec.cletter)
+	{
+		ft_strjoin_free(str, "0x");
+		ft_strjoin_free(str, buf = ft_itoa_base(cl.ld, 16));
+		ft_strdel(&buf);
+	}
+}

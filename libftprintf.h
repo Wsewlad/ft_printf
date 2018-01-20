@@ -17,20 +17,25 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-typedef union		u_conversions
+typedef union			u_conversions
 {
-	char			c;
-	int				d;
-	long			ld;
-	long long		lld;
-	short			hd;
-	signed char		hhd;
-	intmax_t		jd;
-	unsigned int	u;
-	unsigned short	hu;
-	unsigned long	lu;
-	char			*s;
-}					t_conversions;
+	char				c;
+	int					d;
+	long				ld;
+	long long			lld;
+	short				hd;
+	signed char			hhd;
+	intmax_t			jd;
+	size_t				zd;
+	unsigned int		u;
+	unsigned short		hu;
+	unsigned char		hhu;
+	unsigned long		lu;
+	unsigned long long llu;
+	uintmax_t			ju;
+	char				*s;
+	void				*p;
+}						t_conversions;
 
 typedef struct		s_flags
 {
@@ -76,7 +81,10 @@ t_conv				*init_conversion(void);
 void				test(char **str, t_spec_elem spec, va_list ap);
 void				convert_chr(char **str, t_spec_elem spec, va_list ap);
 void				convert_str(char **str, t_spec_elem spec, va_list ap);
-void				convert_int(char **str, t_spec_elem spec, va_list ap);
+void				convert_diD(char **str, t_spec_elem spec, va_list ap);
+void				convert_unsigned(char **str, t_spec_elem spec, va_list ap);
+void				convert_OU(char **str, t_spec_elem spec, va_list ap);
+void				convert_ptr(char **str, t_spec_elem spec, va_list ap);
 
 //////	for testing	//////
 void 				p(t_spec_elem *spec);

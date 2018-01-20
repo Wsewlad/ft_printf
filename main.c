@@ -14,12 +14,12 @@
 
 int		main(void)
 {
-	intmax_t	var;
+	unsigned long var;
 
-	var = 9223372036854775807;
-    ft_printf("ft_printf %jd\n", var);
+	var = 177;
+    ft_printf("ft_printf %O\n", var);
     //system("leaks a.out");
-    printf("printf %jd\n", var);
+    printf("printf %O\n", var);
 
     return (0);
 }

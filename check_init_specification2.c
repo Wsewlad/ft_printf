@@ -49,17 +49,17 @@ t_conv	*init_conversion(void)
 	t_conv			*res;
 	const t_conv	conversion[] = {
 			{'s', &convert_str},
-			{'S', &convert_str},
-			{'p', &test},
-			{'d', &convert_int},
-			{'D', &convert_int},
-			{'i', &convert_int},
-			{'o', &test},
-			{'O', &test},
-			{'u', &test},
-			{'U', &test},
-			{'x', &test},
-			{'X', &test},
+			{'S', &test},
+			{'p', &convert_ptr}, // +
+			{'d', &convert_diD}, // +
+			{'D', &convert_diD}, // +
+			{'i', &convert_diD}, // +
+			{'o', &convert_unsigned}, // +
+			{'O', &convert_OU}, // +
+			{'u', &convert_unsigned}, // +
+			{'U', &convert_OU}, // +
+			{'x', &convert_unsigned}, // +
+			{'X', &convert_unsigned}, // +
 			{'c', &convert_chr},
 			{'C', &convert_chr}
 	};

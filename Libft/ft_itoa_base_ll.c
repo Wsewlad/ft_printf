@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_itoa_base_ll.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vfil <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: vfil <vfil@student.unit.ua>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 11:37:06 by vfil              #+#    #+#             */
-/*   Updated: 2017/11/09 15:15:26 by vfil             ###   ########.fr       */
+/*   Created: 2018/01/20 17:19:04 by vfil              #+#    #+#             */
+/*   Updated: 2018/01/20 17:19:07 by vfil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_find_len(long int ln, int base, int is_neg)
+static int		ft_find_len(long long ln, int *b_c, int is_neg)
 {
 	int	len;
 
 	len = (is_neg == 1) ? 1 : 0;
 	while (ln > 0)
 	{
-		ln /= (long int)base;
+		ln /= (long int)b_c[0];
 		len++;
 	}
 	return (len);
 }
 
-static char		ft_base_val(int num)
+static char		ft_base_val(int num, int caps)
 {
 	if (num >= 0 && num <= 9)
 		return ((char)(num + '0'));
-	return ((char)(num - 10 + 'a'));
+	else if (caps)
+		return ((char)(num - 10 + 'A'));
+	else
+		return ((char)(num - 10 + 'a'));
 }
 
-static char		*ft_make_res(int len, long int ln, int base, int is_neg)
+static char		*ft_make_res(int len, long long ln, int *b_c, int is_neg)
 {
 	char	*res;
 
@@ -41,8 +44,8 @@ static char		*ft_make_res(int len, long int ln, int base, int is_neg)
 		return (NULL);
 	while (ln > 0)
 	{
-		*res = ft_base_val(ln % base);
-		ln /= base;
+		*res = ft_base_val(ln % b_c[0], b_c[1]);
+		ln /= b_c[0];
 		res++;
 	}
 	if (is_neg == 1)
@@ -51,27 +54,28 @@ static char		*ft_make_res(int len, long int ln, int base, int is_neg)
 	return (res - len);
 }
 
-char			*ft_itoa_base(int n, int base)
+char			*ft_itoa_base_ll(long long ln, int base, int caps)
 {
-	long int	ln;
-	int			len;
-	int			is_neg;
-	char		*res;
+	int		b_c[2];
+	int		len;
+	int		is_neg;
+	char	*res;
 
-	ln = n;
+	b_c[0] = base;
+	b_c[1] = caps;
 	len = 0;
 	is_neg = 0;
 	res = NULL;
-	if (n && base && base >= 2 && base <= 16)
+	if (ln && b_c[0] && b_c[0] >= 2 && b_c[0] <= 16)
 	{
 		if (ln < 0)
 		{
 			ln = -ln;
-			if (base == 10)
+			if (b_c[0] == 10)
 				is_neg = 1;
 		}
-		len = ft_find_len(ln, base, is_neg);
-		if (!(res = ft_make_res(len, ln, base, is_neg)))
+		len = ft_find_len(ln, b_c, is_neg);
+		if (!(res = ft_make_res(len, ln, b_c, is_neg)))
 			return (NULL);
 	}
 	return (ft_strrev(res));
