@@ -63,7 +63,15 @@ typedef struct 		s_conv
 	t_convert		make;
 }					t_conv;
 
-void				ft_printf(const char *restrict format, ...);
+typedef struct		s_var4numb
+{
+	char 			*buf;
+	int 			base;
+	int 			caps;
+	t_conversions	cl;
+}					t_var4numb;
+
+int					ft_printf(const char *restrict format, ...);
 int					prntf_parse(char **res, char *format, va_list ap);
 int					check_init_specification(char *format, t_spec_elem *spec);
 void				init_spec2zero(t_spec_elem *spec);

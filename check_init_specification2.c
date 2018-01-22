@@ -49,7 +49,7 @@ t_conv	*init_conversion(void)
 	t_conv			*res;
 	const t_conv	conversion[] = {
 			{'s', &convert_str},
-			{'S', &test},
+			{'S', &convert_str},
 			{'p', &convert_ptr}, // +
 			{'d', &convert_diD}, // +
 			{'D', &convert_diD}, // +

@@ -36,7 +36,7 @@ int		prntf_parse(char **res, char *format, va_list ap)
 	return (step);
 }
 
-void	ft_printf(const char *restrict format, ...)
+int		ft_printf(const char *restrict format, ...)
 {
 	va_list ap;
 	char	*res;
@@ -53,7 +53,7 @@ void	ft_printf(const char *restrict format, ...)
 			step = prntf_parse(&res, (char*)format, ap);
 			format += step;
 		}
-		if (*format)
+		else if (*format)
 		{
 			ft_chrjoin_free(&res, *format);
 			format++;
@@ -61,5 +61,7 @@ void	ft_printf(const char *restrict format, ...)
 	}
 	va_end(ap);
 	ft_putstr(res);
+	step = ft_strlen(res);
 	ft_strdel(&res);
+	return (step);
 }

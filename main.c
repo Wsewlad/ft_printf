@@ -14,12 +14,12 @@
 
 int		main(void)
 {
-	unsigned long var;
+	//unsigned long var;
 
-	var = 177;
-    ft_printf("ft_printf %O\n", var);
-    //system("leaks a.out");
-    printf("printf %O\n", var);
+	//var = 177;
+    ft_printf("ft_printf %u\n", 1);
+    system("leaks a.out");
+    printf("printf %u\n", 1);
 
     return (0);
 }

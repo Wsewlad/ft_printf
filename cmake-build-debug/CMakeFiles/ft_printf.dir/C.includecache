@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/vfil/CLionProjects/ft_printf/libft.h
+/Users/vfil/CLionProjects/ft_printf/Libft/libft.h
 string.h
 -
 stdlib.h
@@ -17,8 +17,8 @@ fcntl.h
 -
 
 /Users/vfil/CLionProjects/ft_printf/libftprintf.h
-libft.h
-/Users/vfil/CLionProjects/ft_printf/libft.h
+Libft/libft.h
+/Users/vfil/CLionProjects/ft_printf/Libft/libft.h
 stdarg.h
 -
 stdio.h

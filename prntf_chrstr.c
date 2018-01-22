@@ -33,6 +33,7 @@ void	convert_str(char **str, t_spec_elem spec, va_list ap)
 	t_conversions	cl;
 
 	if ((cl.s = va_arg(ap, char *)) && spec.cletter)
+		printf("%s\n", cl.s);
 		ft_strjoin_free(str, cl.s);
 }
 
