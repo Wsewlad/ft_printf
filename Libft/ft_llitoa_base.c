@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base_ll.c                                  :+:      :+:    :+:   */
+/*   ft_llitoa_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfil <vfil@student.unit.ua>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/20 17:19:04 by vfil              #+#    #+#             */
-/*   Updated: 2018/01/20 17:19:07 by vfil             ###   ########.fr       */
+/*   Created: 2018/01/23 14:47:29 by vfil              #+#    #+#             */
+/*   Updated: 2018/01/23 14:47:35 by vfil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int		ft_find_len(long long ln, int *b_c, int is_neg)
 	int	len;
 
 	len = (is_neg == 1) ? 1 : 0;
+	if (ln == 0)
+		len++;
 	while (ln > 0)
 	{
 		ln /= (long int)b_c[0];
@@ -42,6 +44,11 @@ static char		*ft_make_res(int len, long long ln, int *b_c, int is_neg)
 	res = (char*)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
+	if (ln == 0)
+	{
+		*res = '0';
+		res++;
+	}
 	while (ln > 0)
 	{
 		*res = ft_base_val(ln % b_c[0], b_c[1]);
@@ -54,7 +61,7 @@ static char		*ft_make_res(int len, long long ln, int *b_c, int is_neg)
 	return (res - len);
 }
 
-char			*ft_itoa_base_ll(long long ln, int base, int caps)
+char			*ft_llitoa_base(long long ln, int base, int caps)
 {
 	int		b_c[2];
 	int		len;
@@ -66,7 +73,7 @@ char			*ft_itoa_base_ll(long long ln, int base, int caps)
 	len = 0;
 	is_neg = 0;
 	res = NULL;
-	if (ln && b_c[0] && b_c[0] >= 2 && b_c[0] <= 16)
+	if (b_c[0] >= 2 && b_c[0] <= 16)
 	{
 		if (ln < 0)
 		{

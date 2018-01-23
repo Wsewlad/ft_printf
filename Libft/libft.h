@@ -93,9 +93,9 @@ void				ft_lstdelcont(void *content, size_t size);
 char				*ft_strrev(char *str);
 char				*ft_itoa_base(int n, int base);
 int					get_next_line(const int fd, char **line);
-char				*ft_itoa_ll(long long n);
-char				*ft_itoa_ull(unsigned long long n);
-char				*ft_itoa_base_ll(long long ln, int base, int caps);
-char				*ft_itoa_base_ull(unsigned long long ln, int base, int caps);
+char				*ft_llitoa(long long n);
+char				*ft_ulltoa(unsigned long long n);
+char				*ft_llitoa_base(long long ln, int base, int caps);
+char				*ft_ulltoa_base(unsigned long long ln, int base, int caps);
 
 #endif

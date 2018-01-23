@@ -17,6 +17,8 @@ static int		ft_find_len(long int ln, int base, int is_neg)
 	int	len;
 
 	len = (is_neg == 1) ? 1 : 0;
+	if (ln == 0)
+		len++;
 	while (ln > 0)
 	{
 		ln /= (long int)base;
@@ -39,6 +41,11 @@ static char		*ft_make_res(int len, long int ln, int base, int is_neg)
 	res = (char*)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
+	if (ln == 0)
+	{
+		*res = '0';
+		res++;
+	}
 	while (ln > 0)
 	{
 		*res = ft_base_val(ln % base);
@@ -62,7 +69,7 @@ char			*ft_itoa_base(int n, int base)
 	len = 0;
 	is_neg = 0;
 	res = NULL;
-	if (n && base && base >= 2 && base <= 16)
+	if (base >= 2 && base <= 16)
 	{
 		if (ln < 0)
 		{

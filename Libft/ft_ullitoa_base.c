@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base_ull.c                                 :+:      :+:    :+:   */
+/*   ft_ullitoa_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfil <vfil@student.unit.ua>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/20 18:48:57 by vfil              #+#    #+#             */
-/*   Updated: 2018/01/20 18:48:58 by vfil             ###   ########.fr       */
+/*   Created: 2018/01/23 14:47:54 by vfil              #+#    #+#             */
+/*   Updated: 2018/01/23 14:47:59 by vfil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int		ft_find_len(unsigned long long ln, int base)
 	int	len;
 
 	len = 0;
+	if (ln == 0)
+		len++;
 	while (ln > 0)
 	{
 		ln /= (unsigned long long)base;
@@ -42,6 +44,11 @@ static char		*ft_make_res(int len, unsigned long long ln, int base, int caps)
 	res = (char*)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
+	if (ln == 0)
+	{
+		*res = '0';
+		res++;
+	}
 	while (ln > 0)
 	{
 		*res = ft_base_val(ln % (unsigned long long)base, caps);
@@ -52,14 +59,14 @@ static char		*ft_make_res(int len, unsigned long long ln, int base, int caps)
 	return (res - len);
 }
 
-char			*ft_itoa_base_ull(unsigned long long ln, int base, int caps)
+char			*ft_ulltoa_base(unsigned long long ln, int base, int caps)
 {
 	int		len;
 	char	*res;
 
 	len = 0;
 	res = NULL;
-	if (ln && base && base >= 2 && base <= 16)
+	if (base >= 2 && base <= 16)
 	{
 		len = ft_find_len(ln, base);
 		if (!(res = ft_make_res(len, ln, base, caps)))
