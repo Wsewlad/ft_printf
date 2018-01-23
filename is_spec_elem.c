@@ -16,7 +16,7 @@ int		is_specifier(char c)
 {
 	char	*formats;
 
-	formats = "sSpdDioOuUxXcC";
+	formats = "sSpdDioOuUxXcC%";
 	while (*formats)
 	{
 		if (c == *formats)

@@ -24,7 +24,7 @@ int		prntf_parse(char **res, char *format, va_list ap)
 	conversion = init_conversion();
 	str = ft_strnew(0);
 	i = 0;
-	while (i < 14)
+	while (i < 15)
 	{
 		if (conversion[i].letter == spec.cletter)
 			conversion[i].make(&str, spec, ap);
@@ -58,6 +58,8 @@ int		ft_printf(const char *restrict format, ...)
 			ft_chrjoin_free(&res, *format);
 			format++;
 		}
+		if (!step)
+			return (0);
 	}
 	va_end(ap);
 	ft_putstr(res);

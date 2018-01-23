@@ -14,12 +14,14 @@
 
 int		main(void)
 {
+	int ret;
 	int var;
 
 	var = 0;
-    ft_printf("ft_printf %d\n", var);
+    ret = ft_printf("%");
    // system("leaks a.out");
-    printf("printf %d\n", var);
+    //ret = printf("%-10.0ll");
+	printf("\nret: %d\n", ret);
 
     return (0);
 }

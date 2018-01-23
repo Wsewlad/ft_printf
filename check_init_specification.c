@@ -15,16 +15,21 @@
 int		check_init_specification(char *format, t_spec_elem *spec)
 {
 	int	step;
+	int frmtlen;
 
+	frmtlen = ft_strlen(format);
 	step = 0;
 	init_spec2zero(spec);
-	while (!(is_specifier(*(format + step - 1))))
+	while (!(is_specifier(*(format + step - 1))) || !step)
 	{
+		if (!frmtlen && !(spec->cletter))
+			return (0);
 		check_init_flags(format, &step, spec);
 		check_init_fwidth(format, &step, spec);
 		check_init_precision(format, &step, spec);
 		check_init_modifiers(format, &step, spec);
 		check_init_specifier(format, &step, spec);
+		frmtlen--;
 	}
 	return (step);
 }

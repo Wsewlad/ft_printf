@@ -93,6 +93,7 @@ void				convert_diD(char **str, t_spec_elem spec, va_list ap);
 void				convert_unsigned(char **str, t_spec_elem spec, va_list ap);
 void				convert_OU(char **str, t_spec_elem spec, va_list ap);
 void				convert_ptr(char **str, t_spec_elem spec, va_list ap);
+void				convert_prcnt(char **str, t_spec_elem spec, va_list ap);
 
 //////	for testing	//////
 void 				p(t_spec_elem *spec);

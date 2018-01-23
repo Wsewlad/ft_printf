@@ -24,17 +24,24 @@ void	convert_chr(char **str, t_spec_elem spec, va_list ap)
 {
 	t_conversions	cl;
 
-	if ((cl.c = (char)va_arg(ap, int)) && spec.cletter)
+	if (spec.cletter)
+	{
+		cl.c = (char)va_arg(ap, int);
 		ft_chrjoin_free(str, cl.c);
+	}
 }
 
 void	convert_str(char **str, t_spec_elem spec, va_list ap)
 {
 	t_conversions	cl;
 
-	if ((cl.s = va_arg(ap, char *)) && spec.cletter)
-		printf("%s\n", cl.s);
+	if (spec.cletter)
+	{
+		cl.s = va_arg(ap, char*);
+		if (cl.s == NULL)
+			cl.s = "(null)";
 		ft_strjoin_free(str, cl.s);
+	}
 }
 
 void	convert_ptr(char **str, t_spec_elem spec, va_list ap)
@@ -42,10 +49,22 @@ void	convert_ptr(char **str, t_spec_elem spec, va_list ap)
 	t_conversions	cl;
 	char 			*buf;
 
-	if ((cl.ld = va_arg(ap, long int)) && spec.cletter)
+	if (spec.cletter)
 	{
+		cl.ld = va_arg(ap, long int);
 		ft_strjoin_free(str, "0x");
 		ft_strjoin_free(str, buf = ft_itoa_base(cl.ld, 16));
 		ft_strdel(&buf);
+	}
+}
+
+void	convert_prcnt(char **str, t_spec_elem spec, va_list ap)
+{
+	t_conversions	cl;
+
+	if (spec.cletter && ap)
+	{
+		cl.c = '%';
+		ft_chrjoin_free(str, cl.c);
 	}
 }
