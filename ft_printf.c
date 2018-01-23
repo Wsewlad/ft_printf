@@ -52,14 +52,17 @@ int		ft_printf(const char *restrict format, ...)
 			format++;
 			step = prntf_parse(&res, (char*)format, ap);
 			format += step;
+			if (!step)
+			{
+				ft_strdel(&res);
+				return (0);
+			}
 		}
 		else if (*format)
 		{
 			ft_chrjoin_free(&res, *format);
 			format++;
 		}
-		if (!step)
-			return (0);
 	}
 	va_end(ap);
 	ft_putstr(res);

@@ -53,7 +53,7 @@ void	convert_ptr(char **str, t_spec_elem spec, va_list ap)
 	{
 		cl.ld = va_arg(ap, long int);
 		ft_strjoin_free(str, "0x");
-		ft_strjoin_free(str, buf = ft_itoa_base(cl.ld, 16));
+		ft_strjoin_free(str, buf = ft_llitoa_base(cl.ld, 16, 0));
 		ft_strdel(&buf);
 	}
 }

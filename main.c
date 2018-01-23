@@ -15,13 +15,15 @@
 int		main(void)
 {
 	int ret;
+	int ret2;
 	int var;
 
 	var = 0;
-    ret = ft_printf("%");
-   // system("leaks a.out");
-    //ret = printf("%-10.0ll");
-	printf("\nret: %d\n", ret);
+	//ret2 = 0;
+    ret = ft_printf("11%c11\n", 0);
+    // system("leaks a.out");
+    ret2 = printf("11%c11\n", 0);
+	printf("\nret1: %d\nret2: %d\n", ret, ret2);
 
     return (0);
 }

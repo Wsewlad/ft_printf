@@ -42,7 +42,7 @@ void	convert_diD(char **str, t_spec_elem spec, va_list ap)
 void	init_bbc(t_spec_elem spec, t_var4numb *v)
 {
 	v->buf = NULL;
-	v->base = (spec.cletter == 'o') ? 8 : 10;
+	v->base = (spec.cletter == 'o' || spec.cletter == 'O') ? 8 : 10;
 	if (spec.cletter == 'x' || spec.cletter == 'X')
 		v->base = 16;
 	v->caps = (spec.cletter == 'X') ? 1 : 0;

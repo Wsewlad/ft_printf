@@ -66,14 +66,14 @@ t_conv	*init_conversion(void)
 	};
 
 	res = malloc(sizeof(conversion));
-	memcpy(res, conversion, sizeof(conversion));
+	ft_memcpy(res, conversion, sizeof(conversion));
 	return (res);
 }
 
-void	p(t_spec_elem *spec)
+/*void	p(t_spec_elem *spec)
 {
 	printf("minus: %d plus: %d zero: %d hash: %d space: %d fwidth:\
 	%d precision: %d smod: %s cletter: %c\n", spec->flags.minus,\
 	spec->flags.plus, spec->flags.zero, spec->flags.hash, spec->flags.space,\
 	spec->fwidth, spec->precision, spec->smod, spec->cletter);
-}
+}*/
