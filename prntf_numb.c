@@ -34,7 +34,7 @@ void	convert_diD(char **str, t_spec_elem spec, va_list ap)
 	else if (!ft_strcmp(spec.smod, "z"))
 		ft_strjoin_free(str, buf = ft_llitoa(cl.zd = va_arg(ap, size_t)));
 	else if (!ft_strcmp(spec.smod, ""))
-		ft_strjoin_free(str, buf = ft_itoa_base(cl.d = va_arg(ap, int), 10));
+		ft_strjoin_free(str, buf = ft_itoa(cl.d = va_arg(ap, int)));
 	if (buf)
 		ft_strdel(&buf);
 }

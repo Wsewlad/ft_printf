@@ -30,7 +30,8 @@ LIBFTSRC    =	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 
 LSRC    =   $(addprefix Libft/, $(LIBFTSRC))
 
-SRC		=	ft_printf.c check_init_specification.c check_init_specification2.c is_spec_elem.c prntf_chrstr.c prntf_numb.c
+SRC		=	ft_printf.c check_init_specification.c check_init_specification2.c \
+is_spec_elem.c prntf_chrstr.c prntf_numb.c prntf_unicode.c
 
 LOSRC   =   $(LIBFTSRC:.c=.o)
 

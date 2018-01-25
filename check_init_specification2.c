@@ -61,7 +61,7 @@ t_conv	*init_conversion(void)
 			{'x', &convert_unsigned}, // +
 			{'X', &convert_unsigned}, // +
 			{'c', &convert_chr},
-			{'C', &convert_chr},
+			{'C', &convert_unichr},
 			{'%', &convert_prcnt}
 	};
 

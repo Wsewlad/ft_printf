@@ -17,6 +17,8 @@
 # include <stdarg.h>
 # include <stdio.h>
 
+# define BUF_SIZE_PF 100
+
 typedef union			u_conversions
 {
 	char				c;
@@ -94,6 +96,7 @@ void				convert_unsigned(char **str, t_spec_elem spec, va_list ap);
 void				convert_OU(char **str, t_spec_elem spec, va_list ap);
 void				convert_ptr(char **str, t_spec_elem spec, va_list ap);
 void				convert_prcnt(char **str, t_spec_elem spec, va_list ap);
+void				convert_unichr(char **str, t_spec_elem spec, va_list ap);
 
 //////	for testing	//////
 void 				p(t_spec_elem *spec);
