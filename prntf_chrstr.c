@@ -24,7 +24,9 @@ void	convert_chr(char **str, t_spec_elem spec, va_list ap)
 {
 	t_conversions	cl;
 
-	if (spec.cletter)
+	if (ft_strcmp(spec.smod, "l"))
+		convert_unichr(str, spec, ap);
+	else
 	{
 		cl.c = (char)va_arg(ap, int);
 		ft_chrjoin_free(str, cl.c);
@@ -35,7 +37,9 @@ void	convert_str(char **str, t_spec_elem spec, va_list ap)
 {
 	t_conversions	cl;
 
-	if (spec.cletter)
+	if (ft_strcmp(spec.smod, "l"))
+		convert_unistr(str, spec, ap);
+	else
 	{
 		cl.s = va_arg(ap, char*);
 		if (cl.s == NULL)

@@ -49,7 +49,7 @@ t_conv	*init_conversion(void)
 	t_conv			*res;
 	const t_conv	conversion[] = {
 			{'s', &convert_str},
-			{'S', &convert_str},
+			{'S', &convert_unistr},
 			{'p', &convert_ptr}, // +
 			{'d', &convert_diD}, // +
 			{'D', &convert_diD}, // +
@@ -61,8 +61,8 @@ t_conv	*init_conversion(void)
 			{'x', &convert_unsigned}, // +
 			{'X', &convert_unsigned}, // +
 			{'c', &convert_chr},
-			{'C', &convert_unichr},
-			{'%', &convert_prcnt}
+			{'C', &convert_unichr}, // +
+			{'%', &convert_prcnt} // +
 	};
 
 	res = malloc(sizeof(conversion));

@@ -97,6 +97,8 @@ void				convert_OU(char **str, t_spec_elem spec, va_list ap);
 void				convert_ptr(char **str, t_spec_elem spec, va_list ap);
 void				convert_prcnt(char **str, t_spec_elem spec, va_list ap);
 void				convert_unichr(char **str, t_spec_elem spec, va_list ap);
+void				convert_unistr(char **str, t_spec_elem spec, va_list ap);
+void				get_symbol(char **str, unsigned int numb);
 
 //////	for testing	//////
 void 				p(t_spec_elem *spec);
