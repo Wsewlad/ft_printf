@@ -24,7 +24,7 @@ void	convert_chr(char **str, t_spec_elem spec, va_list ap)
 {
 	t_conversions	cl;
 
-	if (ft_strcmp(spec.smod, "l"))
+	if (ft_strcmp(spec.smod, "l") == 0)
 		convert_unichr(str, spec, ap);
 	else
 	{
@@ -37,7 +37,7 @@ void	convert_str(char **str, t_spec_elem spec, va_list ap)
 {
 	t_conversions	cl;
 
-	if (ft_strcmp(spec.smod, "l"))
+	if (ft_strcmp(spec.smod, "l") == 0)
 		convert_unistr(str, spec, ap);
 	else
 	{

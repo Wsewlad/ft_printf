@@ -12,13 +12,6 @@
 
 #include "libftprintf.h"
 
-/**
- *	without mask ->	0xxxxxxx
- *	mask02 ->		110xxxxx 10xxxxxx
- *	mask03 ->		1110xxxx 10xxxxxx 10xxxxxx
- *	mask04 ->		11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
- **/
-
 static void	get_two_bytes(char **str, unsigned int u)
 {
 	unsigned int	mask02;

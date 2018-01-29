@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-void	convert_diD(char **str, t_spec_elem spec, va_list ap)
+void		convert_diD(char **str, t_spec_elem spec, va_list ap)
 {
 	char			*buf;
 	t_conversions	cl;
@@ -39,7 +39,7 @@ void	convert_diD(char **str, t_spec_elem spec, va_list ap)
 		ft_strdel(&buf);
 }
 
-void	init_bbc(t_spec_elem spec, t_var4numb *v)
+static void	init_bbc(t_spec_elem spec, t_var4numb *v)
 {
 	v->buf = NULL;
 	v->base = (spec.cletter == 'o' || spec.cletter == 'O') ? 8 : 10;
@@ -48,7 +48,7 @@ void	init_bbc(t_spec_elem spec, t_var4numb *v)
 	v->caps = (spec.cletter == 'X') ? 1 : 0;
 }
 
-void	convert_unsigned_helper(t_var4numb *v, char **str, t_spec_elem spec, \
+void		convert_unsigned_helper(t_var4numb *v, char **str, t_spec_elem spec, \
 va_list ap)
 {
 	if (!(ft_strcmp(spec.smod, "l")))
@@ -74,7 +74,7 @@ va_list ap)
 		va_arg(ap, unsigned int), v->base, v->caps));
 }
 
-void	convert_unsigned(char **str, t_spec_elem spec, va_list ap)
+void		convert_unsigned(char **str, t_spec_elem spec, va_list ap)
 {
 	t_var4numb	v;
 
@@ -84,7 +84,7 @@ void	convert_unsigned(char **str, t_spec_elem spec, va_list ap)
 		ft_strdel(&v.buf);
 }
 
-void	convert_OU(char **str, t_spec_elem spec, va_list ap)
+void		convert_OU(char **str, t_spec_elem spec, va_list ap)
 {
 	t_var4numb	v;
 

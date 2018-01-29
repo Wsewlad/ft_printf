@@ -73,6 +73,13 @@ typedef struct		s_var4numb
 	t_conversions	cl;
 }					t_var4numb;
 
+typedef struct 		s_pfbuf
+{
+	int				size;
+	char 			*buf;
+	t_pfbuf			*next;
+}					t_pfbuf;
+
 int					ft_printf(const char *restrict format, ...);
 int					prntf_parse(char **res, char *format, va_list ap);
 int					check_init_specification(char *format, t_spec_elem *spec);

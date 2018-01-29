@@ -22,9 +22,9 @@ int		main(void)
 	char* l = setlocale(LC_ALL, "");
 	var = 0;
 	//ret2 = 0;
-    ret = ft_printf("%S\n", L"Привіт");
+    ret = ft_printf("ft_printf: %x %d %o %u \n", -1230000000, -2147483640, -123, -123);
     // system("leaks a.out");
-    ret2 = printf("%S\n", L"Привіт");
+    ret2 = printf("printf: %x %d %o %u \n", -1230000000, -2147483640, -123, -123);
 	printf("\nret1: %d\nret2: %d\n", ret, ret2);
 
     return (0);

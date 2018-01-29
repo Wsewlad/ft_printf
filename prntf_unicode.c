@@ -16,9 +16,11 @@ void	convert_unichr(char **str, t_spec_elem spec, va_list ap)
 {
 	t_conversions	cl;
 
-	if (spec.cletter && ap)
+	if (spec.cletter)
+	{
 		cl.u = va_arg(ap, unsigned int);
-	get_symbol(str, cl.u);
+		get_symbol(str, cl.u);
+	}
 }
 
 void	convert_unistr(char **str, t_spec_elem spec, va_list ap)
