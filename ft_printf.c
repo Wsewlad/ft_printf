@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-int		prntf_parse(char **res, char *format, va_list ap)
+int		prntf_parse(t_pfbuf **res, char *format, va_list ap)
 {
 	t_spec_elem		spec;
 	int				step;
@@ -30,20 +30,21 @@ int		prntf_parse(char **res, char *format, va_list ap)
 			conversion[i].make(&str, spec, ap);
 		i++;
 	}
-	ft_strjoin_free(res, str);
+	fill_buf_str(res, str);
 	ft_strdel(&str);
 	ft_memdel((void**)&conversion);
+
 	return (step);
 }
 
 int		ft_printf(const char *restrict format, ...)
 {
 	va_list ap;
-	char	*res;
+	t_pfbuf	*res;
 	int		step;
 
 	step = 0;
-	res = ft_strnew(0);
+	res = pf_bufnew(BUF_SIZE_PF);
 	va_start(ap, format);
 	while (*format)
 	{
@@ -54,19 +55,20 @@ int		ft_printf(const char *restrict format, ...)
 			format += step;
 			if (!step)
 			{
-				ft_strdel(&res);
+				//ft_strdel(&res);
+				//print_buf(&res);
 				return (0);
 			}
 		}
 		else if (*format)
 		{
-			ft_chrjoin_free(&res, *format);
+			fill_buf_chr(&res, *format);
 			format++;
 		}
 	}
 	va_end(ap);
-	ft_putstr(res);
-	step = ft_strlen(res);
-	ft_strdel(&res);
+	step = print_buf(&res);
+	//step = ft_strlen(res);
+	//ft_strdel(&res);
 	return (step);
 }

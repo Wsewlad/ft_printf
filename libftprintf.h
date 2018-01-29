@@ -17,7 +17,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-# define BUF_SIZE_PF 100
+# define BUF_SIZE_PF 1024
 
 typedef union			u_conversions
 {
@@ -77,11 +77,11 @@ typedef struct 		s_pfbuf
 {
 	int				size;
 	char 			*buf;
-	t_pfbuf			*next;
+	struct s_pfbuf	*next;
 }					t_pfbuf;
 
 int					ft_printf(const char *restrict format, ...);
-int					prntf_parse(char **res, char *format, va_list ap);
+int					prntf_parse(t_pfbuf **res, char *format, va_list ap);
 int					check_init_specification(char *format, t_spec_elem *spec);
 void				init_spec2zero(t_spec_elem *spec);
 void				check_init_flags(char *format, int *step, t_spec_elem *spec);
@@ -106,6 +106,12 @@ void				convert_prcnt(char **str, t_spec_elem spec, va_list ap);
 void				convert_unichr(char **str, t_spec_elem spec, va_list ap);
 void				convert_unistr(char **str, t_spec_elem spec, va_list ap);
 void				get_symbol(char **str, unsigned int numb);
+
+t_pfbuf				*pf_bufnew(size_t size);
+void				ft_bufadd(t_pfbuf **head, t_pfbuf *new);
+void				fill_buf_str(t_pfbuf **head, char *str);
+void				fill_buf_chr(t_pfbuf **head, char chr);
+int					print_buf(t_pfbuf **head);
 
 //////	for testing	//////
 void 				p(t_spec_elem *spec);
