@@ -19,7 +19,7 @@ void		convert_diD(t_pfbuf **res, t_spec_elem spec, va_list ap)
 
 	buf = NULL;
 	if (spec.cletter == 'D')
-		fill_buf_str(res, buf = ft_llitoa(cl.ld = va_arg(ap, long)));
+		fill_buf_str(res, buf = ft_llitoa(cl.lld = va_arg(ap, long long)));
 	else if (!ft_strcmp(spec.smod, "l"))
 		fill_buf_str(res, buf = ft_llitoa(cl.ld = va_arg(ap, long)));
 	else if (!ft_strcmp(spec.smod, "ll"))

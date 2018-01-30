@@ -32,10 +32,13 @@ void	convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	{
 		unistr = va_arg(ap, unsigned int*);
 		i = 0;
-		while (unistr[i])
-		{
-			get_symbol(res, unistr[i]);
-			i++;
-		}
+		if (!unistr)
+			fill_buf_str(res, "(null)");
+		else
+			while (unistr[i])
+			{
+				get_symbol(res, unistr[i]);
+				i++;
+			}
 	}
 }

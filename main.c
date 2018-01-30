@@ -17,14 +17,14 @@ int		main(void)
 {
 	int ret;
 	int ret2;
-	int var;
+	long long int var;
 
 	char* l = setlocale(LC_ALL, "");
-	var = 0;
+	var = -9223372036854775808;
 	//ret = 0;
 	//ret2 = 0;
-    ret = ft_printf("%", 1);
-    ret2 = printf("%", 1);
+    ret = ft_printf("%D\n", var);
+    ret2 = printf("%D\n", var);
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
     return (0);
