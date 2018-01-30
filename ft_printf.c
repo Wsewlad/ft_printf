@@ -18,20 +18,16 @@ int		prntf_parse(t_pfbuf **res, char *format, va_list ap)
 	int				step;
 	int				i;
 	t_conv			*conversion;
-	char 			*str;
 
 	step = check_init_specification(format, &spec);
 	conversion = init_conversion();
-	str = ft_strnew(0);
 	i = 0;
 	while (i < 15)
 	{
 		if (conversion[i].letter == spec.cletter)
-			conversion[i].make(&str, spec, ap);
+			conversion[i].make(res, spec, ap);
 		i++;
 	}
-	fill_buf_str(res, str);
-	ft_strdel(&str);
 	ft_memdel((void**)&conversion);
 
 	return (step);
@@ -55,8 +51,7 @@ int		ft_printf(const char *restrict format, ...)
 			format += step;
 			if (!step)
 			{
-				//ft_strdel(&res);
-				//print_buf(&res);
+				print_buf(&res);
 				return (0);
 			}
 		}
@@ -68,7 +63,5 @@ int		ft_printf(const char *restrict format, ...)
 	}
 	va_end(ap);
 	step = print_buf(&res);
-	//step = ft_strlen(res);
-	//ft_strdel(&res);
 	return (step);
 }

@@ -57,7 +57,14 @@ typedef struct		s_spec_elem
 	char 			cletter;
 }					t_spec_elem;
 
-typedef void		(*t_convert)(char **str, t_spec_elem spec, va_list ap);
+typedef struct 		s_pfbuf
+{
+	int				size;
+	char 			*buf;
+	struct s_pfbuf	*next;
+}					t_pfbuf;
+
+typedef void		(*t_convert)(t_pfbuf **res, t_spec_elem spec, va_list ap);
 
 typedef struct 		s_conv
 {
@@ -72,13 +79,6 @@ typedef struct		s_var4numb
 	int 			caps;
 	t_conversions	cl;
 }					t_var4numb;
-
-typedef struct 		s_pfbuf
-{
-	int				size;
-	char 			*buf;
-	struct s_pfbuf	*next;
-}					t_pfbuf;
 
 int					ft_printf(const char *restrict format, ...);
 int					prntf_parse(t_pfbuf **res, char *format, va_list ap);
@@ -95,17 +95,17 @@ int					is_flag(char c);
 int					is_modifier(char c);
 
 t_conv				*init_conversion(void);
-void				test(char **str, t_spec_elem spec, va_list ap);
-void				convert_chr(char **str, t_spec_elem spec, va_list ap);
-void				convert_str(char **str, t_spec_elem spec, va_list ap);
-void				convert_diD(char **str, t_spec_elem spec, va_list ap);
-void				convert_unsigned(char **str, t_spec_elem spec, va_list ap);
-void				convert_OU(char **str, t_spec_elem spec, va_list ap);
-void				convert_ptr(char **str, t_spec_elem spec, va_list ap);
-void				convert_prcnt(char **str, t_spec_elem spec, va_list ap);
-void				convert_unichr(char **str, t_spec_elem spec, va_list ap);
-void				convert_unistr(char **str, t_spec_elem spec, va_list ap);
-void				get_symbol(char **str, unsigned int numb);
+void				test(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				convert_str(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				convert_diD(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				convert_unsigned(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				convert_OU(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				convert_ptr(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				convert_prcnt(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				convert_unichr(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				get_symbol(t_pfbuf **res, unsigned int numb);
 
 t_pfbuf				*pf_bufnew(size_t size);
 void				ft_bufadd(t_pfbuf **head, t_pfbuf *new);

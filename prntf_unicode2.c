@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static void	get_two_bytes(char **str, unsigned int u)
+static void	get_two_bytes(t_pfbuf **res, unsigned int u)
 {
 	unsigned int	mask02;
 	unsigned char	p1;
@@ -21,11 +21,11 @@ static void	get_two_bytes(char **str, unsigned int u)
 	mask02 = 49280;
 	p2 = (u << 26) >> 26;
 	p1 = ((u >> 6) << 27) >> 27;
-	ft_chrjoin_free(str, (char)((mask02 >> 8) | p1));
-	ft_chrjoin_free(str, (char)(((mask02 << 24) >> 24) | p2));
+	fill_buf_chr(res, (char)((mask02 >> 8) | p1));
+	fill_buf_chr(res, (char)(((mask02 << 24) >> 24) | p2));
 }
 
-static void	get_three_bytes(char **str, unsigned int u)
+static void	get_three_bytes(t_pfbuf **res, unsigned int u)
 {
 	unsigned int	mask03;
 	unsigned char	p1;
@@ -36,12 +36,12 @@ static void	get_three_bytes(char **str, unsigned int u)
 	p3 = (u << 26) >> 26;
 	p2 = ((u >> 6) << 26) >> 26;
 	p1 = ((u >> 12) << 28) >> 28;
-	ft_chrjoin_free(str, (char)((mask03 >> 16) | p1));
-	ft_chrjoin_free(str, (char)(((mask03 << 16) >> 24) | p2));
-	ft_chrjoin_free(str, (char)(((mask03 << 24) >> 24) | p3));
+	fill_buf_chr(res, (char)((mask03 >> 16) | p1));
+	fill_buf_chr(res, (char)(((mask03 << 16) >> 24) | p2));
+	fill_buf_chr(res, (char)(((mask03 << 24) >> 24) | p3));
 }
 
-static void	get_four_bytes(char **str, unsigned int u)
+static void	get_four_bytes(t_pfbuf **res, unsigned int u)
 {
 	unsigned int	mask04;
 	unsigned char	p1;
@@ -54,13 +54,13 @@ static void	get_four_bytes(char **str, unsigned int u)
 	p3 = ((u >> 6) << 26) >> 26;
 	p2 = ((u >> 12) << 26) >> 26;
 	p1 = ((u >> 18) << 28) >> 28;
-	ft_chrjoin_free(str, (char)((mask04 >> 24) | p1));
-	ft_chrjoin_free(str, (char)(((mask04 << 8) >> 24) | p2));
-	ft_chrjoin_free(str, (char)(((mask04 << 16) >> 24) | p3));
-	ft_chrjoin_free(str, (char)(((mask04 << 24) >> 24) | p4));
+	fill_buf_chr(res, (char)((mask04 >> 24) | p1));
+	fill_buf_chr(res, (char)(((mask04 << 8) >> 24) | p2));
+	fill_buf_chr(res, (char)(((mask04 << 16) >> 24) | p3));
+	fill_buf_chr(res, (char)(((mask04 << 24) >> 24) | p4));
 }
 
-void		get_symbol(char **str, unsigned int numb)
+void		get_symbol(t_pfbuf **res, unsigned int numb)
 {
 	int				bits;
 	unsigned int	n;
@@ -73,11 +73,11 @@ void		get_symbol(char **str, unsigned int numb)
 		bits++;
 	}
 	if (bits <= 7)
-		ft_chrjoin_free(str, (char)numb);
+		fill_buf_chr(res, (char)numb);
 	else if (bits <= 11)
-		get_two_bytes(str, numb);
+		get_two_bytes(res, numb);
 	else if (bits <= 16)
-		get_three_bytes(str, numb);
+		get_three_bytes(res, numb);
 	else if (bits <= 21)
-		get_four_bytes(str, numb);
+		get_four_bytes(res, numb);
 }

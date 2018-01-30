@@ -22,9 +22,8 @@ int		main(void)
 	char* l = setlocale(LC_ALL, "");
 	var = 0;
 	//ret2 = 0;
-    ret = ft_printf("ft_printf: %s %d\n", "Hello, World!!!", 500);
-    // system("leaks a.out");
-    ret2 = printf("___printf: %s %d\n", "Hello, World!!!", 500);
+    ret = ft_printf("ft_printf: %S\n", L"ݗݜशব");
+    ret2 = printf("___printf: %S\n", L"ݗݜशব");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
     return (0);
