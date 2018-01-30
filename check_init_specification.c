@@ -20,7 +20,7 @@ int		check_init_specification(char *format, t_spec_elem *spec)
 	len = ft_strlen(format);
 	step = 0;
 	init_spec2zero(spec);
-	while (!(is_specifier(*(format + step - 1))) || !step)
+	while (!(spec->cletter) || !step)
 	{
 		if (!len && !(spec->cletter))
 			return (0);

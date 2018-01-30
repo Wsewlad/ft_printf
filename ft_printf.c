@@ -17,51 +17,54 @@ int		prntf_parse(t_pfbuf **res, char *format, va_list ap)
 	t_spec_elem		spec;
 	int				step;
 	int				i;
-	t_conv			*conversion;
+	t_conv			*conv;
 
 	step = check_init_specification(format, &spec);
-	conversion = init_conversion();
+	conv = init_conversion();
 	i = 0;
-	while (i < 15)
-	{
-		if (conversion[i].letter == spec.cletter)
-			conversion[i].make(res, spec, ap);
+	while (conv[i].letter != spec.cletter && conv[i].letter != '0')
 		i++;
-	}
-	ft_memdel((void**)&conversion);
-
+	if (conv[i].letter == spec.cletter)
+		conv[i].make(res, spec, ap);
+	else if (spec.cletter != '\0')
+		fill_buf_chr(res, spec.cletter);
+	ft_memdel((void**)&conv);
 	return (step);
+}
+
+void	prntf_runner(t_pfbuf **res, char *format, va_list ap)
+{
+	int step;
+
+	step = 0;
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			step = prntf_parse(res, format, ap);
+			format += step;
+			if (!step)
+				return ;
+		}
+		else if (*format)
+		{
+			fill_buf_chr(res, *format);
+			format++;
+		}
+	}
 }
 
 int		ft_printf(const char *restrict format, ...)
 {
 	va_list ap;
 	t_pfbuf	*res;
-	int		step;
+	int		len;
 
-	step = 0;
 	res = pf_bufnew(BUF_SIZE_PF);
 	va_start(ap, format);
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			step = prntf_parse(&res, (char*)format, ap);
-			format += step;
-			if (!step)
-			{
-				print_buf(&res);
-				return (0);
-			}
-		}
-		else if (*format)
-		{
-			fill_buf_chr(&res, *format);
-			format++;
-		}
-	}
+	prntf_runner(&res, (char*)format, ap);
 	va_end(ap);
-	step = print_buf(&res);
-	return (step);
+	len = print_buf(&res);
+	return (len);
 }

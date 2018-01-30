@@ -37,7 +37,7 @@ void	check_init_modifiers(char *format, int *step, t_spec_elem *spec)
 void	check_init_specifier(char *format, int *step, t_spec_elem *spec)
 {
 	format += *step;
-	if (is_specifier(*format))
+	if (is_specifier(*format) || (!is_flag(*format) && !is_modifier(*format)))
 	{
 		spec->cletter = *format;
 		(*step)++;
@@ -62,7 +62,8 @@ t_conv	*init_conversion(void)
 			{'X', &convert_unsigned}, // +
 			{'c', &convert_chr},
 			{'C', &convert_unichr}, // +
-			{'%', &convert_prcnt} // +
+			{'%', &convert_prcnt}, // +
+			{'0', NULL}
 	};
 
 	res = malloc(sizeof(conversion));
