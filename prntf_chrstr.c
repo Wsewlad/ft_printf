@@ -17,7 +17,7 @@ void	test(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	t_conversions	cl;
 
 	if ((cl.s = va_arg(ap, char *)) && spec.cletter)
-		fill_buf_str(res, "_test_");
+		fill_buf_str(res, "_test_", spec);
 }
 
 void	convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap)
@@ -29,7 +29,16 @@ void	convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	else
 	{
 		cl.c = (char)va_arg(ap, int);
-		fill_buf_chr(res, cl.c);
+		if (!spec.flags.minus)
+		{
+			fill_padding(res, spec.fwidth - 1, spec);
+			fill_buf_chr(res, cl.c);
+		}
+		else
+		{
+			fill_buf_chr(res, cl.c);
+			fill_padding(res, spec.fwidth - 1, spec);
+		}
 	}
 }
 
@@ -44,7 +53,7 @@ void	convert_str(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		cl.s = va_arg(ap, char*);
 		if (cl.s == NULL)
 			cl.s = "(null)";
-		fill_buf_str(res, cl.s);
+		fill_buf_str(res, cl.s, spec);
 	}
 }
 
@@ -56,8 +65,8 @@ void	convert_ptr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	if (spec.cletter)
 	{
 		cl.ld = va_arg(ap, long int);
-		fill_buf_str(res, "0x");
-		fill_buf_str(res, buf = ft_llitoa_base(cl.ld, 16, 0));
+		fill_buf_str(res, "0x", spec);
+		fill_buf_str(res, buf = ft_llitoa_base(cl.ld, 16, 0), spec);
 		ft_strdel(&buf);
 	}
 }

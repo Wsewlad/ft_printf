@@ -19,22 +19,22 @@ void		convert_diD(t_pfbuf **res, t_spec_elem spec, va_list ap)
 
 	buf = NULL;
 	if (spec.cletter == 'D')
-		fill_buf_str(res, buf = ft_llitoa(cl.lld = va_arg(ap, long long)));
+		fill_buf_str(res, buf = ft_llitoa(cl.lld = va_arg(ap, long long)), spec);
 	else if (!ft_strcmp(spec.smod, "l"))
-		fill_buf_str(res, buf = ft_llitoa(cl.ld = va_arg(ap, long)));
+		fill_buf_str(res, buf = ft_llitoa(cl.ld = va_arg(ap, long)), spec);
 	else if (!ft_strcmp(spec.smod, "ll"))
 		fill_buf_str(res, buf = ft_llitoa(cl.lld = va_arg(ap, long \
- long)));
+ long)), spec);
 	else if (!ft_strcmp(spec.smod, "h"))
-		fill_buf_str(res, buf = ft_itoa(cl.hd = va_arg(ap, int)));
+		fill_buf_str(res, buf = ft_itoa(cl.hd = va_arg(ap, int)), spec);
 	else if (!ft_strcmp(spec.smod, "hh"))
-		fill_buf_str(res, buf = ft_itoa(cl.hhd = va_arg(ap, int)));
+		fill_buf_str(res, buf = ft_itoa(cl.hhd = va_arg(ap, int)), spec);
 	else if (!ft_strcmp(spec.smod, "j"))
-		fill_buf_str(res, buf = ft_llitoa(cl.jd = va_arg(ap, intmax_t)));
+		fill_buf_str(res, buf = ft_llitoa(cl.jd = va_arg(ap, intmax_t)), spec);
 	else if (!ft_strcmp(spec.smod, "z"))
-		fill_buf_str(res, buf = ft_llitoa(cl.zd = va_arg(ap, size_t)));
+		fill_buf_str(res, buf = ft_llitoa(cl.zd = va_arg(ap, size_t)), spec);
 	else if (!ft_strcmp(spec.smod, ""))
-		fill_buf_str(res, buf = ft_itoa(cl.d = va_arg(ap, int)));
+		fill_buf_str(res, buf = ft_itoa(cl.d = va_arg(ap, int)), spec);
 	if (buf)
 		ft_strdel(&buf);
 }
@@ -53,25 +53,25 @@ va_list ap)
 {
 	if (!(ft_strcmp(spec.smod, "l")))
 		fill_buf_str(res, v->buf = ft_ulltoa_base(v->cl.lu = \
-		va_arg(ap, unsigned long), v->base, v->caps));
+		va_arg(ap, unsigned long), v->base, v->caps), spec);
 	else if (!(ft_strcmp(spec.smod, "ll")))
 		fill_buf_str(res, v->buf = ft_ulltoa_base(v->cl.llu = \
-		va_arg(ap, unsigned long long), v->base, v->caps));
+		va_arg(ap, unsigned long long), v->base, v->caps), spec);
 	else if (!(ft_strcmp(spec.smod, "h")))
 		fill_buf_str(res, v->buf = ft_ulltoa_base(v->cl.hu = \
-		va_arg(ap, unsigned int), v->base, v->caps));
+		va_arg(ap, unsigned int), v->base, v->caps), spec);
 	else if (!(ft_strcmp(spec.smod, "hh")))
 		fill_buf_str(res, v->buf = ft_ulltoa_base(v->cl.hhu = \
-		va_arg(ap, unsigned int), v->base, v->caps));
+		va_arg(ap, unsigned int), v->base, v->caps), spec);
 	else if (!(ft_strcmp(spec.smod, "j")))
 		fill_buf_str(res, v->buf = ft_ulltoa_base(v->cl.ju = \
-		va_arg(ap, uintmax_t), v->base, v->caps));
+		va_arg(ap, uintmax_t), v->base, v->caps), spec);
 	else if (!(ft_strcmp(spec.smod, "z")))
 		fill_buf_str(res, v->buf = ft_ulltoa_base(v->cl.zd = \
-		va_arg(ap, size_t), v->base, v->caps));
+		va_arg(ap, size_t), v->base, v->caps), spec);
 	else if (!(ft_strcmp(spec.smod, "")))
 		fill_buf_str(res, v->buf = ft_ulltoa_base(v->cl.u = \
-		va_arg(ap, unsigned int), v->base, v->caps));
+		va_arg(ap, unsigned int), v->base, v->caps), spec);
 }
 
 void		convert_unsigned(t_pfbuf **res, t_spec_elem spec, va_list ap)
@@ -91,7 +91,7 @@ void		convert_OU(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	init_bbc(spec, &v);
 	v.cl.lu = va_arg(ap, unsigned long);
 	if (spec.cletter == 'O' || spec.cletter == 'U')
-		fill_buf_str(res, v.buf = ft_ulltoa_base(v.cl.lu, v.base, v.caps));
+		fill_buf_str(res, v.buf = ft_ulltoa_base(v.cl.lu, v.base, v.caps), spec);
 	if (v.buf)
 		ft_strdel(&v.buf);
 }

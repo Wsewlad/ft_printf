@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   flag_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfil <vfil@student.unit.ua>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 17:43:08 by vfil              #+#    #+#             */
-/*   Updated: 2018/01/12 17:43:10 by vfil             ###   ########.fr       */
+/*   Created: 2018/01/31 16:06:17 by vfil              #+#    #+#             */
+/*   Updated: 2018/01/31 16:06:20 by vfil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <locale.h>
 
-int		main(void)
+void	fill_padding(t_pfbuf **head, int len, t_spec_elem spec)
 {
-	int		ret;
-	int		ret2;
-	int		var;
-	char	*str;
+	while (len)
+	{
+		fill_buf_chr(head, \
+		(spec.flags.zero && !spec.flags.minus ) ? '0' : ' ');
+		len--;
+	}
+}
 
-	char* l = setlocale(LC_ALL, "");
-	var = 92233;
-	//ret = 0;
-	//ret2 = 0;
-	str = "longish";
-    ret = ft_printf("%.5p\n", str);
-    ret2 = printf("%.5p\n", str);
-	printf("ret1: %d\nret2: %d\n", ret, ret2);
-
-    return (0);
+void	fill_str(t_pfbuf **head, int len, char *str)
+{
+	while (*str && len)
+	{
+		fill_buf_chr(head, *str);
+		str++;
+		len--;
+	}
 }
