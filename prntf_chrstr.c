@@ -31,13 +31,13 @@ void	convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		cl.c = (char)va_arg(ap, int);
 		if (!spec.flags.minus)
 		{
-			fill_padding(res, spec.fwidth - 1, spec);
+			push_padding(res, spec.fwidth - 1, spec);
 			fill_buf_chr(res, cl.c);
 		}
 		else
 		{
 			fill_buf_chr(res, cl.c);
-			fill_padding(res, spec.fwidth - 1, spec);
+			push_padding(res, spec.fwidth - 1, spec);
 		}
 	}
 }
@@ -78,6 +78,15 @@ void	convert_prcnt(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	if (spec.cletter && ap)
 	{
 		cl.c = '%';
-		fill_buf_chr(res, cl.c);
+		if (!spec.flags.minus)
+		{
+			push_padding(res, spec.fwidth - 1, spec);
+			fill_buf_chr(res, cl.c);
+		}
+		else
+		{
+			fill_buf_chr(res, cl.c);
+			push_padding(res, spec.fwidth - 1, spec);
+		}
 	}
 }

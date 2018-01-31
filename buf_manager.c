@@ -52,13 +52,13 @@ void	fill_buf_str(t_pfbuf **head, char *str, t_spec_elem spec)
 		len = (spec.precision < len) ? spec.precision : len;
 	if (!spec.flags.minus)
 	{
-		fill_padding(head, (spec.fwidth > len) ? spec.fwidth - len : 0, spec);
-		fill_str(head, len, str);
+		push_padding(head, (spec.fwidth > len) ? spec.fwidth - len : 0, spec);
+		push_str(head, len, str);
 	}
 	else
 	{
-		fill_str(head, len, str);
-		fill_padding(head, (spec.fwidth > len) ? spec.fwidth - len : 0, spec);
+		push_str(head, len, str);
+		push_padding(head, (spec.fwidth > len) ? spec.fwidth - len : 0, spec);
 	}
 }
 

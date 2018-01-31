@@ -34,9 +34,9 @@ void		convert_diD(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	else if (!ft_strcmp(spec.smod, "z"))
 		fill_buf_str(res, buf = ft_llitoa(cl.zd = va_arg(ap, size_t)), spec);
 	else if (!ft_strcmp(spec.smod, ""))
-		fill_buf_str(res, buf = ft_itoa(cl.d = va_arg(ap, int)), spec);
-	if (buf)
-		ft_strdel(&buf);
+		lltoa_base_buf(res, va_arg(ap, int), 16, 1);
+	//if (buf)
+	//	ft_strdel(&buf);
 }
 
 static void	init_bbc(t_spec_elem spec, t_var4numb *v)

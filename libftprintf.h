@@ -112,9 +112,9 @@ void				ft_bufadd(t_pfbuf **head, t_pfbuf *new);
 void				fill_buf_str(t_pfbuf **head, char *str, t_spec_elem spec);
 void				fill_buf_chr(t_pfbuf **head, char chr);
 int					print_buf(t_pfbuf **head);
-void				fill_str(t_pfbuf **head, int len, char *str);
-void				fill_padding(t_pfbuf **head, int len, t_spec_elem spec);
-
+void				push_str(t_pfbuf **head, int len, char *str);
+void				push_padding(t_pfbuf **head, int len, t_spec_elem spec);
+void				lltoa_base_buf(t_pfbuf **res, long long ln, int base, int caps);
 //////	for testing	//////
 void 				p(t_spec_elem *spec);
 

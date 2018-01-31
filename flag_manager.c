@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-void	fill_padding(t_pfbuf **head, int len, t_spec_elem spec)
+void	push_padding(t_pfbuf **head, int len, t_spec_elem spec)
 {
 	while (len)
 	{
@@ -22,7 +22,7 @@ void	fill_padding(t_pfbuf **head, int len, t_spec_elem spec)
 	}
 }
 
-void	fill_str(t_pfbuf **head, int len, char *str)
+void	push_str(t_pfbuf **head, int len, char *str)
 {
 	while (*str && len)
 	{
