@@ -12,7 +12,8 @@
 
 #include "libft.h"
 
-static char	*ft_fill_arr(long long n, long long i, int len, int min)
+static char	*ft_fill_arr(unsigned long long n, unsigned long long i, int len, \
+int min)
 {
 	long long	j;
 	char		*str;
@@ -36,9 +37,10 @@ static char	*ft_fill_arr(long long n, long long i, int len, int min)
 
 char		*ft_llitoa(long long n)
 {
-	long long int	i;
-	int				len;
-	int				min;
+	unsigned long long	i;
+	unsigned long long	un;
+	int					len;
+	int					min;
 
 	i = 1;
 	len = 0;
@@ -46,13 +48,15 @@ char		*ft_llitoa(long long n)
 	if (n < 0)
 	{
 		min = 1;
-		n *= -1;
+		un = n * -1;
 		len++;
 	}
-	while (n / i > 9)
+	else
+		un = n;
+	while (un / i > 9)
 	{
 		i *= 10;
 		len++;
 	}
-	return (ft_fill_arr(n, i, len, min));
+	return (ft_fill_arr(un, i, len, min));
 }

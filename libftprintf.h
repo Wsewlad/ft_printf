@@ -17,7 +17,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-# define BUF_SIZE_PF 1024
+# define BUF_SIZE_PF 1
 
 typedef union			u_conversions
 {

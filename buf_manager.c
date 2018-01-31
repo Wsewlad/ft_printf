@@ -45,26 +45,10 @@ void	ft_bufadd(t_pfbuf **head, t_pfbuf *new)
 
 void	fill_buf_str(t_pfbuf **head, char *str)
 {
-	int 	i;
-	t_pfbuf *new;
-	t_pfbuf *crawler;
-	new = NULL;
-	crawler = *head;
-	while (crawler->next && crawler->size == BUF_SIZE_PF)
-		crawler = crawler->next;
-	i = crawler->size;
-	while (*str && crawler->size < BUF_SIZE_PF)
+	while (*str)
 	{
-		crawler->buf[i] = *str;
-		crawler->size++;
+		fill_buf_chr(head, *str);
 		str++;
-		i++;
-	}
-	if (crawler->size == BUF_SIZE_PF && *str)
-	{
-		new = pf_bufnew(BUF_SIZE_PF);
-		ft_bufadd(&crawler, new);
-		fill_buf_str(&crawler, str);
 	}
 }
 
