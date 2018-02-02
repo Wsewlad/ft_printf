@@ -12,11 +12,11 @@
 
 #include "libftprintf.h"
 
-static int	find_len(unsigned long long un, int min)
+static int	find_len(unsigned long long un)
 {
 	int	len;
 
-	len = min ? 1 : 0;
+	len = 0;
 	if (un == 0)
 		len++;
 	while (un > 0)
@@ -46,12 +46,12 @@ static void		push_numb(t_pfbuf **res, unsigned long long un, int len, int min)
 
 void		lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec)
 {
-	unsigned long long	i;
 	unsigned long long	un;
 	int					len;
 	int					min;
+	int 				prec;
+	int 				padd;
 
-	i = 1;
 	min = 0;
 	if (n < 0)
 	{
@@ -60,9 +60,48 @@ void		lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec)
 	}
 	else
 		un = n;
-	if (spec.cletter)
+	len = find_len(un);
+	prec = (spec.precision > len - 1) ? spec.precision - len : 0;
+//	printf("prec1: %d\n", prec);
+	prec = (spec.flags.zero && spec.fwidth > len + prec && spec.precision == -1)
+		   ? prec + (spec.fwidth - (len + prec)) : prec;
+	//printf("prec2: %d\n", prec);
+	n = (spec.flags.plus || spec.flags.space || min) ? 1 : 0;
+	prec = (spec.flags.zero && n) ? prec - 1 : prec;
+	//printf("prec3: %d\n", prec);
+	padd = (spec.fwidth > len + prec) ? (spec.fwidth -
+			(len + prec + n)) : 0;
+	//printf("padd: %d\n", padd);
+	if (!spec.flags.minus)
 	{
-		len = find_len(un, min);
-		push_numb(res, un, len, min);
+		push_padding(res, padd, spec, 0);
+		if (spec.flags.plus && !min)
+			fill_buf_chr(res, '+');
+		if (spec.flags.space && !spec.flags.plus && !min)
+			fill_buf_chr(res, ' ');
+		if (min)
+		{
+			fill_buf_chr(res, '-');
+			min = 0;
+		}
+		push_padding(res, prec, spec, 1);
+		if (spec.precision != 0 && un)
+			push_numb(res, un, len, min);
 	}
+	else
+	{
+		if (spec.flags.plus && !min)
+			fill_buf_chr(res, '+');
+		if (spec.flags.space && !spec.flags.plus && !min)
+			fill_buf_chr(res, ' ');
+		if (spec.precision != -1 && min)
+		{
+			fill_buf_chr(res, '-');
+			min = 0;
+		}
+		push_padding(res, prec, spec, 1);
+		if (spec.precision != 0 && un)
+			push_numb(res, un, len, min);
+		push_padding(res, padd, spec, 0);
 	}
+}

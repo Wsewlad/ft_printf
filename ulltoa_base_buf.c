@@ -42,7 +42,7 @@ static void		push_unumb(t_pfbuf **res, int base, unsigned long long un,
 	while (pow)
 	{
 		fill_buf_chr(res, (caps && (un / pow) > 9) ?
-						  ltr[(un / pow + 6)] : ltr[un / pow]);
+						  ltr[(un / pow) + 6] : ltr[un / pow]);
 		un %= pow;
 		pow /= base;
 	}

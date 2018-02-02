@@ -12,14 +12,21 @@
 
 #include "libftprintf.h"
 
-void	push_padding(t_pfbuf **head, int len, t_spec_elem spec)
+void	push_padding(t_pfbuf **head, int len, t_spec_elem spec, int zero)
 {
-	while (len)
-	{
-		fill_buf_chr(head, \
-		(spec.flags.zero && !spec.flags.minus ) ? '0' : ' ');
-		len--;
-	}
+	if (zero)
+		while (len)
+		{
+			fill_buf_chr(head, '0');
+			len--;
+		}
+	else
+		while (len)
+		{
+			fill_buf_chr(head, (spec.flags.zero && !spec.flags.minus &&
+					spec.precision == -1) ? '0' : ' ');
+			len--;
+		}
 }
 
 void	push_str(t_pfbuf **head, int len, char *str)
