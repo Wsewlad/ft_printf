@@ -19,26 +19,6 @@
 
 # define BUF_SIZE_PF 1
 
-typedef union			u_conversions
-{
-	char				c;
-	int					d;
-	long				ld;
-	long long			lld;
-	short				hd;
-	signed char			hhd;
-	intmax_t			jd;
-	size_t				zd;
-	unsigned int		u;
-	unsigned short		hu;
-	unsigned char		hhu;
-	unsigned long		lu;
-	unsigned long long llu;
-	uintmax_t			ju;
-	char				*s;
-	void				*p;
-}						t_conversions;
-
 typedef struct		s_flags
 {
 	int				minus;
@@ -74,10 +54,8 @@ typedef struct 		s_conv
 
 typedef struct		s_var4numb
 {
-	char 			*buf;
 	int 			base;
 	int 			caps;
-	t_conversions	cl;
 }					t_var4numb;
 
 int					ft_printf(const char *restrict format, ...);
@@ -98,9 +76,9 @@ t_conv				*init_conversion(void);
 void				test(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_str(t_pfbuf **res, t_spec_elem spec, va_list ap);
-void				convert_diD(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				convert_dibd(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_unsigned(t_pfbuf **res, t_spec_elem spec, va_list ap);
-void				convert_OU(t_pfbuf **res, t_spec_elem spec, va_list ap);
+void				convert_bou(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_ptr(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_prcnt(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_unichr(t_pfbuf **res, t_spec_elem spec, va_list ap);
@@ -114,7 +92,9 @@ void				fill_buf_chr(t_pfbuf **head, char chr);
 int					print_buf(t_pfbuf **head);
 void				push_str(t_pfbuf **head, int len, char *str);
 void				push_padding(t_pfbuf **head, int len, t_spec_elem spec);
-void				lltoa_base_buf(t_pfbuf **res, long long ln, int base, int caps);
+void				ulltoa_base_buf(t_pfbuf **res, unsigned long long un, int *base_caps, t_spec_elem spec);
+void				lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec);
+
 //////	for testing	//////
 void 				p(t_spec_elem *spec);
 

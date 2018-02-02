@@ -51,13 +51,13 @@ t_conv	*init_conversion(void)
 			{'s', &convert_str}, // +
 			{'S', &convert_unistr}, // +
 			{'p', &convert_ptr}, // +
-			{'d', &convert_diD}, // +
-			{'D', &convert_diD}, // +
-			{'i', &convert_diD}, // +
+			{'d', &convert_dibd}, // +
+			{'D', &convert_dibd}, // +
+			{'i', &convert_dibd}, // +
 			{'o', &convert_unsigned}, // +
-			{'O', &convert_OU}, // +
+			{'O', &convert_bou}, // +
 			{'u', &convert_unsigned}, // +
-			{'U', &convert_OU}, // +
+			{'U', &convert_bou}, // +
 			{'x', &convert_unsigned}, // +
 			{'X', &convert_unsigned}, // +
 			{'c', &convert_chr}, // +

@@ -32,7 +32,7 @@ LSRC    =   $(addprefix Libft/, $(LIBFTSRC))
 
 SRC		=	ft_printf.c check_init_specification.c check_init_specification2.c \
 is_spec_elem.c prntf_chrstr.c prntf_numb.c prntf_unicode.c prntf_unicode2.c \
-buf_manager.c flag_manager.c u_lltoa_base_buf.c
+buf_manager.c flag_manager.c ulltoa_base_buf.c lltoa_buf.c
 
 LOSRC   =   $(LIBFTSRC:.c=.o)
 

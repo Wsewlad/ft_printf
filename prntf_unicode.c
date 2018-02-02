@@ -14,12 +14,9 @@
 
 void	convert_unichr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 {
-	t_conversions	cl;
-
 	if (spec.cletter)
 	{
-		cl.u = va_arg(ap, unsigned int);
-		get_symbol(res, cl.u);
+		get_symbol(res, va_arg(ap, unsigned int));
 	}
 }
 
