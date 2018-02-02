@@ -27,9 +27,10 @@ static int	find_len(unsigned long long un)
 	return (len);
 }
 
-static void		push_numb(t_pfbuf **res, unsigned long long un, int len, int min)
+static void	push_numb(t_pfbuf **res, unsigned long long un, int len, \
+					int min)
 {
-	unsigned long long 	pow;
+	unsigned long long	pow;
 
 	pow = 1;
 	while ((len--) - 1)
@@ -44,64 +45,59 @@ static void		push_numb(t_pfbuf **res, unsigned long long un, int len, int min)
 	}
 }
 
+static void	culc_prec_padd(int *prec, int *padd, int len, t_spec_elem spec)
+{
+	int n;
+	int min;
+
+	min = *prec;
+	*prec = (spec.precision > len - 1) ? spec.precision - len : 0;
+	*prec = (spec.flags.zero && spec.fwidth > len + *prec && \
+	spec.precision == -1) ? *prec + (spec.fwidth - (len + *prec)) : *prec;
+	n = (spec.flags.plus || spec.flags.space || min) ? 1 : 0;
+	*prec = (spec.flags.zero && n) ? *prec - 1 : *prec;
+	*padd = (spec.fwidth > len + *prec) ? (spec.fwidth - (len + *prec + n)) : 0;
+}
+
+static void	push_prec_flags(t_pfbuf **res, t_spec_elem spec, int *min, int prec)
+{
+	if (spec.flags.plus && !*min)
+		fill_buf_chr(res, '+');
+	if (spec.flags.space && !spec.flags.plus && !*min)
+		fill_buf_chr(res, ' ');
+	if (*min)
+	{
+		fill_buf_chr(res, '-');
+		*min = 0;
+	}
+	push_padding(res, prec, spec, 1);
+}
+
 void		lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec)
 {
 	unsigned long long	un;
 	int					len;
 	int					min;
-	int 				prec;
-	int 				padd;
+	int					prec;
+	int					padd;
 
-	min = 0;
-	if (n < 0)
-	{
-		min = 1;
-		un = -n;
-	}
-	else
-		un = n;
-	len = find_len(un);
-	prec = (spec.precision > len - 1) ? spec.precision - len : 0;
-//	printf("prec1: %d\n", prec);
-	prec = (spec.flags.zero && spec.fwidth > len + prec && spec.precision == -1)
-		   ? prec + (spec.fwidth - (len + prec)) : prec;
-	//printf("prec2: %d\n", prec);
-	n = (spec.flags.plus || spec.flags.space || min) ? 1 : 0;
-	prec = (spec.flags.zero && n) ? prec - 1 : prec;
-	//printf("prec3: %d\n", prec);
-	padd = (spec.fwidth > len + prec) ? (spec.fwidth -
-			(len + prec + n)) : 0;
-	//printf("padd: %d\n", padd);
+	min = (n < 0) ? 1 : 0;
+	un = (n < 0) ? -n : n;
+	len = (!un && spec.precision == 0) ? 0 : find_len(un);
+	prec = min;
+	culc_prec_padd(&prec, &padd, len, spec);
 	if (!spec.flags.minus)
 	{
 		push_padding(res, padd, spec, 0);
-		if (spec.flags.plus && !min)
-			fill_buf_chr(res, '+');
-		if (spec.flags.space && !spec.flags.plus && !min)
-			fill_buf_chr(res, ' ');
-		if (min)
-		{
-			fill_buf_chr(res, '-');
-			min = 0;
-		}
-		push_padding(res, prec, spec, 1);
-		if (spec.precision != 0 && un)
-			push_numb(res, un, len, min);
+		push_prec_flags(res, spec, &min, prec);
+		if (spec.precision == 0 && !un)
+			return ;
+		push_numb(res, un, len, min);
+		return ;
 	}
-	else
-	{
-		if (spec.flags.plus && !min)
-			fill_buf_chr(res, '+');
-		if (spec.flags.space && !spec.flags.plus && !min)
-			fill_buf_chr(res, ' ');
-		if (spec.precision != -1 && min)
-		{
-			fill_buf_chr(res, '-');
-			min = 0;
-		}
-		push_padding(res, prec, spec, 1);
-		if (spec.precision != 0 && un)
-			push_numb(res, un, len, min);
-		push_padding(res, padd, spec, 0);
-	}
+	push_prec_flags(res, spec, &min, prec);
+	if (spec.precision == 0 && !un)
+		return ;
+	push_numb(res, un, len, min);
+	push_padding(res, padd, spec, 0);
 }

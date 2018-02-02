@@ -27,7 +27,7 @@ void	convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 
 	if (spec.cletter)
 	{
-		unistr = va_arg(ap, unsigned int*);
+		unistr = va_arg(ap, unsigned int *);
 		i = 0;
 		if (!unistr)
 			fill_buf_str(res, "(null)", spec);

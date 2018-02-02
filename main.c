@@ -25,6 +25,9 @@ int		main(void)
 	//ret = 0;
 	//ret2 = -42;
 	str = "longish";
+	ret = ft_printf("%10.D\n", 0L);
+	ret2 = printf("%10.D\n", 0L);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
     ret = ft_printf("%12d\n", var);
     ret2 = printf("%12d\n", var);
 	printf("ret1: %d\nret2: %d\n", ret, ret2);

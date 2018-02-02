@@ -29,13 +29,13 @@ void	convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		c = va_arg(ap, int);
 		if (!spec.flags.minus)
 		{
-			push_padding(res, spec.fwidth, spec, 0);
+			push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
 			fill_buf_chr(res, c);
 		}
 		else
 		{
 			fill_buf_chr(res, c);
-			push_padding(res, spec.fwidth, spec, 0);
+			push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
 		}
 	}
 }
@@ -48,7 +48,7 @@ void	convert_str(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		convert_unistr(res, spec, ap);
 	else
 	{
-		str = va_arg(ap, char*);
+		str = va_arg(ap, char *);
 		if (str == NULL)
 			str = "(null)";
 		fill_buf_str(res, str, spec);
@@ -78,13 +78,13 @@ void	convert_prcnt(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		c = '%';
 		if (!spec.flags.minus)
 		{
-			push_padding(res, spec.fwidth, spec, 0);
+			push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
 			fill_buf_chr(res, c);
 		}
 		else
 		{
 			fill_buf_chr(res, c);
-			push_padding(res, spec.fwidth, spec, 0);
+			push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
 		}
 	}
 }

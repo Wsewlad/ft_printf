@@ -53,8 +53,13 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
 {
 	int	len;
 
-	if (spec.cletter)
-		len = find_len(un, base_caps[0]);
+	if (spec.cletter == 'p')
+	{
+		push_unumb(res, base_caps[0], un, base_caps[1]);
+		return ;
+	}
+
+	len = find_len(un, base_caps[0]);
 	push_unumb(res, base_caps[0], un, base_caps[1]);
 }
 
