@@ -86,6 +86,8 @@ void				fill_buf_chr(t_pfbuf **head, char chr);
 int					print_buf(t_pfbuf **head);
 void				push_str(t_pfbuf **head, int len, char *str);
 void				push_padding(t_pfbuf **head, int len, t_spec_elem spec, int zero);
+void				culc_prec_padd(int *prec, int *padd, int len, t_spec_elem spec);
+void				push_prec_flags(t_pfbuf **res, t_spec_elem spec, int *min, int prec);
 void				ulltoa_base_buf(t_pfbuf **res, unsigned long long un, int *base_caps, t_spec_elem spec);
 void				lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec);
 

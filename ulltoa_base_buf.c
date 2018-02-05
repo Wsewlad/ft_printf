@@ -52,14 +52,32 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
 							int *base_caps, t_spec_elem spec)
 {
 	int	len;
+    int min;
+    int	prec;
+    int	padd;
 
 	if (spec.cletter == 'p')
 	{
 		push_unumb(res, base_caps[0], un, base_caps[1]);
 		return ;
 	}
-
-	len = find_len(un, base_caps[0]);
-	push_unumb(res, base_caps[0], un, base_caps[1]);
+	len = (!un && spec.precision == 0) ? 0 : find_len(un, base_caps[0]);
+    min = 0;
+    prec = min;
+    culc_prec_padd(&prec, &padd, len, spec);
+    if (!spec.flags.minus)
+    {
+        push_padding(res, padd, spec, 0);
+        push_prec_flags(res, spec, &min, prec);
+        if (spec.precision == 0 && !un)
+            return ;
+        push_unumb(res, base_caps[0], un, base_caps[1]);
+        return ;
+    }
+    push_prec_flags(res, spec, &min, prec);
+    if (spec.precision == 0 && !un)
+        return ;
+    push_unumb(res, base_caps[0], un, base_caps[1]);
+    push_padding(res, padd, spec, 0);
 }
 
