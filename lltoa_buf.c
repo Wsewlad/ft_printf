@@ -52,10 +52,13 @@ static void	culc_prec_padd(int *prec, int *padd, int len, t_spec_elem spec)
 
 	min = *prec;
 	*prec = (spec.precision > len - 1) ? spec.precision - len : 0;
-	*prec = (spec.flags.zero && spec.fwidth > len + *prec && \
+	//printf("*prec: %d\n", *prec);
+	*prec = (spec.flags.zero && !spec.flags.minus && spec.fwidth > len + *prec && \
 	spec.precision == -1) ? *prec + (spec.fwidth - (len + *prec)) : *prec;
+	//printf("*prec2: %d\n", *prec);
 	n = (spec.flags.plus || spec.flags.space || min) ? 1 : 0;
-	*prec = (spec.flags.zero && n) ? *prec - 1 : *prec;
+	*prec = (spec.flags.zero && n && !spec.flags.minus) ? *prec - 1 : *prec;
+	//printf("*prec3: %d\n", *prec);
 	*padd = (spec.fwidth > len + *prec) ? (spec.fwidth - (len + *prec + n)) : 0;
 }
 
@@ -70,7 +73,7 @@ static void	push_prec_flags(t_pfbuf **res, t_spec_elem spec, int *min, int prec)
 		fill_buf_chr(res, '-');
 		*min = 0;
 	}
-	push_padding(res, prec, spec, 1);
+	push_padding(res, prec > 0 ? prec : 0, spec, 1);
 }
 
 void		lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec)
@@ -86,6 +89,7 @@ void		lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec)
 	len = (!un && spec.precision == 0) ? 0 : find_len(un);
 	prec = min;
 	culc_prec_padd(&prec, &padd, len, spec);
+	//printf("prec: %d, padd: %d\n", prec, padd);
 	if (!spec.flags.minus)
 	{
 		push_padding(res, padd, spec, 0);
