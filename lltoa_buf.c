@@ -57,7 +57,7 @@ void	culc_prec_padd(int *prec, int *padd, int len, t_spec_elem spec)
         *prec = (spec.precision > len - 1) ? spec.precision - len : 0;
         *prec = (spec.flags.zero && !spec.flags.minus && spec.fwidth > len + *prec && \
 	spec.precision == -1) ? *prec + (spec.fwidth - (len + *prec)) : *prec;
-        n = (spec.flags.plus || spec.flags.space || min) ? 1 : 0;
+        n = (spec.flags.plus || spec.flags.space || min || spec.flags.hash) ? 1 : 0;
         *prec = (spec.flags.zero && n && !spec.flags.minus) ? *prec - 1 : *prec;
         *prec = (spec.flags.zero && spec.precision != -1 && min) ? *prec + 1 : *prec;
         *padd = (spec.fwidth > len + *prec) ? (spec.fwidth - (len + *prec + n)) : 0;
@@ -74,10 +74,13 @@ void	culc_prec_padd(int *prec, int *padd, int len, t_spec_elem spec)
 
 void	push_prec_flags(t_pfbuf **res, t_spec_elem spec, int *min, int prec)
 {
-	if (spec.flags.plus && !*min)
-		fill_buf_chr(res, '+');
-	if (spec.flags.space && !spec.flags.plus && !*min)
-		fill_buf_chr(res, ' ');
+    if (spec.cletter == 'd' || spec.cletter == 'D' || spec.cletter == 'i')
+    {
+        if (spec.flags.plus && !*min)
+            fill_buf_chr(res, '+');
+        if (spec.flags.space && !spec.flags.plus && !*min)
+            fill_buf_chr(res, ' ');
+    }
 	if (*min)
 	{
 		fill_buf_chr(res, '-');

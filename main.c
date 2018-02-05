@@ -21,12 +21,12 @@ int		main(void)
 	char	*str;
 
 	char* l = setlocale(LC_ALL, "");
-	var = 45;
+	var = 2500;
 	//ret = 0;
 	//ret2 = -42;
 	str = "longish";
-	ret = ft_printf("%#o\n", var);
-	ret2 = printf("%#o\n", var);
+	ret = ft_printf("%-#6o\n", var);
+	ret2 = printf("%-#6o\n", var);
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 	/*ret = ft_printf("%03.2d\n", var);
 	ret2 = printf("%03.2d\n", var);
