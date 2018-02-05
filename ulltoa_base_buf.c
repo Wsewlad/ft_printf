@@ -68,7 +68,6 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
     if (!spec.flags.minus)
     {
         push_padding(res, padd > 0 ? padd : 0, spec, 0);
-        printf("Hello!\n");
         push_prec_flags(res, spec, &min, prec);
         if (spec.precision == 0 && !un)
             return ;

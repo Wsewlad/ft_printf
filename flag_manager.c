@@ -14,15 +14,12 @@
 
 void	push_padding(t_pfbuf **head, int len, t_spec_elem spec, int zero)
 {
-    printf("len: %d, zero: %d\n", len, zero);
     if (zero)
-    {
         while (len)
         {
             fill_buf_chr(head, '0');
             len--;
         }
-    }
 	else
 		while (len)
 		{

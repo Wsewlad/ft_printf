@@ -17,7 +17,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-# define BUF_SIZE_PF 512
+# define BUF_SIZE_PF 30s
 
 typedef struct		s_flags
 {
