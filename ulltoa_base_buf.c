@@ -28,8 +28,8 @@ static int	find_len(unsigned long long un, int base)
 	return (len);
 }
 
-static void		push_unumb(t_pfbuf **res, int base, unsigned long long un,
-					  int caps)
+void		push_unumb(t_pfbuf **res, int base, unsigned long long un,
+                       int caps)
 {
 	unsigned long long 	pow;
 	char 				ltr[24] = "0123456789abcdefABCDEF";
@@ -56,11 +56,6 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
     int	prec;
     int	padd;
 
-	if (spec.cletter == 'p')
-	{
-		push_unumb(res, base_caps[0], un, base_caps[1]);
-		return ;
-	}
 	len = (!un && spec.precision == 0) ? 0 : find_len(un, base_caps[0]);
     min = 0;
     prec = min;

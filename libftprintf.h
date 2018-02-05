@@ -17,7 +17,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-# define BUF_SIZE_PF 30s
+# define BUF_SIZE_PF 64
 
 typedef struct		s_flags
 {
@@ -52,6 +52,11 @@ typedef struct 		s_conv
 	t_convert		make;
 }					t_conv;
 
+typedef struct      s_var
+{
+
+}                   t_var;
+
 int					ft_printf(const char *restrict format, ...);
 int					prntf_parse(t_pfbuf **res, char *format, va_list ap);
 int					check_init_specification(char *format, t_spec_elem *spec);
@@ -74,7 +79,7 @@ void				convert_dibd(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_unsigned(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_bou(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_ptr(t_pfbuf **res, t_spec_elem spec, va_list ap);
-void				convert_prcnt(t_pfbuf **res, t_spec_elem spec, va_list ap);
+//void				convert_prcnt(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_unichr(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				get_symbol(t_pfbuf **res, unsigned int numb);
@@ -86,8 +91,10 @@ void				fill_buf_chr(t_pfbuf **head, char chr);
 int					print_buf(t_pfbuf **head);
 void				push_str(t_pfbuf **head, int len, char *str);
 void				push_padding(t_pfbuf **head, int len, t_spec_elem spec, int zero);
+//void                push_padd_chr(char c, t_pfbuf **res, t_spec_elem spec);
 void				culc_prec_padd(int *prec, int *padd, int len, t_spec_elem spec);
 void				push_prec_flags(t_pfbuf **res, t_spec_elem spec, int *min, int prec);
+void		        push_unumb(t_pfbuf **res, int base, unsigned long long un, int caps);
 void				ulltoa_base_buf(t_pfbuf **res, unsigned long long un, int *base_caps, t_spec_elem spec);
 void				lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec);
 

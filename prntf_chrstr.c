@@ -12,11 +12,19 @@
 
 #include "libftprintf.h"
 
-void	test(t_pfbuf **res, t_spec_elem spec, va_list ap)
+/*void	push_padd_chr(char c, t_pfbuf **res, t_spec_elem spec)
 {
-	if (va_arg(ap, char *) && spec.cletter)
-		fill_buf_str(res, "_test_", spec);
-}
+    if (!spec.flags.minus)
+    {
+        push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
+        fill_buf_chr(res, c);
+    }
+    else
+    {
+        fill_buf_chr(res, c);
+        push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
+    }
+}*/
 
 void	convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 {
@@ -26,17 +34,17 @@ void	convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		convert_unichr(res, spec, ap);
 	else
 	{
-		c = va_arg(ap, int);
-		if (!spec.flags.minus)
-		{
-			push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
-			fill_buf_chr(res, c);
-		}
-		else
-		{
-			fill_buf_chr(res, c);
-			push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
-		}
+		c = (spec.cletter == '%') ? '%' : va_arg(ap, int);
+        if (!spec.flags.minus)
+        {
+            push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
+            fill_buf_chr(res, c);
+        }
+        else
+        {
+            fill_buf_chr(res, c);
+            push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
+        }
 	}
 }
 
@@ -65,11 +73,11 @@ void	convert_ptr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	{
 		fill_buf_chr(res, '0');
 		fill_buf_chr(res, 'x');
-		ulltoa_base_buf(res, va_arg(ap, unsigned long), base_caps, spec);
+		push_unumb(res, base_caps[0], va_arg(ap, unsigned long), base_caps[1]);
 	}
 }
 
-void	convert_prcnt(t_pfbuf **res, t_spec_elem spec, va_list ap)
+/*void	convert_prcnt(t_pfbuf **res, t_spec_elem spec, va_list ap)
 {
 	char	c;
 
@@ -87,4 +95,4 @@ void	convert_prcnt(t_pfbuf **res, t_spec_elem spec, va_list ap)
 			push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
 		}
 	}
-}
+}*/
