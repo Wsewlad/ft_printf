@@ -67,7 +67,8 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
     culc_prec_padd(&prec, &padd, len, spec);
     if (!spec.flags.minus)
     {
-        push_padding(res, padd, spec, 0);
+        push_padding(res, padd > 0 ? padd : 0, spec, 0);
+        printf("Hello!\n");
         push_prec_flags(res, spec, &min, prec);
         if (spec.precision == 0 && !un)
             return ;
@@ -78,6 +79,6 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
     if (spec.precision == 0 && !un)
         return ;
     push_unumb(res, base_caps[0], un, base_caps[1]);
-    push_padding(res, padd, spec, 0);
+    push_padding(res, padd > 0 ? padd : 0, spec, 0);
 }
 
