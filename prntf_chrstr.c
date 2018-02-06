@@ -65,15 +65,28 @@ void	convert_str(t_pfbuf **res, t_spec_elem spec, va_list ap)
 
 void	convert_ptr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 {
-	int base_caps[2];
+	int				base_caps[2];
+	int 			len;
+	unsigned long	un;
 
 	base_caps[0] = 16;
 	base_caps[1] = 0;
-	if (spec.cletter)
+	un = va_arg(ap, unsigned long);
+	len = find_ulen(un, 16) + 2;
+
+	if (!spec.flags.minus)
+	{
+		push_padding(res, (spec.fwidth > len) ? spec.fwidth - len : 0, spec, 0);
+		fill_buf_chr(res, '0');
+		fill_buf_chr(res, 'x');
+		push_unumb(res, base_caps[0], un, base_caps[1]);
+	}
+	else
 	{
 		fill_buf_chr(res, '0');
 		fill_buf_chr(res, 'x');
-		push_unumb(res, base_caps[0], va_arg(ap, unsigned long), base_caps[1]);
+		push_unumb(res, base_caps[0], un, base_caps[1]);
+		push_padding(res, (spec.fwidth > len) ? spec.fwidth - len : 0, spec, 0);
 	}
 }
 

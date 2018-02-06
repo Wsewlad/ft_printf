@@ -90,6 +90,7 @@ void				fill_buf_chr(t_pfbuf **head, char chr);
 int					print_buf(t_pfbuf **head);
 void				push_str(t_pfbuf **head, int len, char *str);
 void				push_padding(t_pfbuf **head, int len, t_spec_elem spec, int zero);
+int					find_ulen(unsigned long long un, int base);
 //void                push_padd_chr(char c, t_pfbuf **res, t_spec_elem spec);
 void				culc_prec_padd(int *prec, int *padd, int len, t_spec_elem spec);
 void				push_prec_flags(t_pfbuf **res, t_spec_elem spec, int *min, int prec);

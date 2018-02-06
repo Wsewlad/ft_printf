@@ -13,7 +13,7 @@
 
 #include "libftprintf.h"
 
-static int	find_len(unsigned long long un, int base)
+int	find_ulen(unsigned long long un, int base)
 {
 	int	len;
 
@@ -35,11 +35,10 @@ void		push_unumb(t_pfbuf **res, int base, unsigned long long un,
 	char 				ltr[24] = "0123456789abcdefABCDEF";
 	int 				len;
 
-	len = find_len(un, base);
+	len = find_ulen(un, base);
 	pow = 1;
 	while ((len--) - 1)
 		pow *= base;
-    printf("pow: %llu\n", pow);
 	while (pow)
 	{
 		fill_buf_chr(res, (caps && (un / pow) > 9) ?
@@ -57,11 +56,13 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
     int	prec;
     int	padd;
 
-	len = (!un && spec.precision == 0 && !spec.flags.hash) ? 0 : find_len(un, base_caps[0]);
-    printf("len: %d\n", len);
+	len = (!un && spec.precision == 0 && !spec.flags.hash) ? 0 : \
+    find_ulen(un, base_caps[0]);
     min = 0;
     prec = min;
     spec.flags.hash = (spec.flags.hash && !un) ? -1 : spec.flags.hash;
+    spec.flags.hash = (spec.flags.hash && !un && (spec.cletter == 'x' \
+ || spec.cletter == 'X')) ? 0 : spec.flags.hash;
     culc_prec_padd(&prec, &padd, len, spec);
     if (!spec.flags.minus)
     {
