@@ -58,13 +58,13 @@ void	culc_prec_padd(int *prec, int *padd, int len, t_spec_elem spec)
     if (spec.cletter == 'X' || spec.cletter == 'x' || spec.cletter == 'o'
         || spec.cletter == 'O')
     {
-        n = (spec.flags.hash) ? 1 : n;
-        *prec = (spec.flags.hash) ? *prec - 1 : *prec;
+        n = (spec.flags.hash > 0) ? 1 : n;
+        *prec = (spec.flags.hash > 0) ? *prec - 1 : *prec;
     }
     *prec = (spec.flags.zero && n && !spec.flags.minus) ? *prec - 1 : *prec;
     *prec = (spec.flags.zero && spec.precision != -1 && min) ? *prec + 1 : *prec;
     *padd = (spec.fwidth > len + *prec) ? (spec.fwidth - (len + *prec + n)) : 0;
-    if (spec.flags.hash && (spec.cletter == 'X' || spec.cletter == 'x' || spec.cletter == 'o'
+    if (spec.flags.hash > 0 && (spec.cletter == 'X' || spec.cletter == 'x' || spec.cletter == 'o'
         || spec.cletter == 'O'))
         *padd = (spec.cletter == 'x' || spec.cletter == 'X') ? *padd - 2 : *padd - 1;
 
@@ -84,7 +84,7 @@ void	push_prec_flags(t_pfbuf **res, t_spec_elem spec, int *min, int prec)
 		fill_buf_chr(res, '-');
 		*min = 0;
 	}
-    if (spec.flags.hash)
+    if (spec.flags.hash > 0)
     {
         if (spec.cletter == 'o' || spec.cletter == 'O')
             fill_buf_chr(res, '0');

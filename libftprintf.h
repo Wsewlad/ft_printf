@@ -72,7 +72,6 @@ int					is_flag(char c);
 int					is_modifier(char c);
 
 t_conv				*init_conversion(void);
-void				test(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_str(t_pfbuf **res, t_spec_elem spec, va_list ap);
 void				convert_dibd(t_pfbuf **res, t_spec_elem spec, va_list ap);

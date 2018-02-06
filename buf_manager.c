@@ -68,21 +68,19 @@ void	fill_buf_chr(t_pfbuf **head, char chr)
 	t_pfbuf *new;
 	t_pfbuf *crawler;
 
-	new = NULL;
 	crawler = *head;
-	while (crawler->next && crawler->size == BUF_SIZE_PF)
-		crawler = crawler->next;
 	i = crawler->size;
 	if (crawler->size < BUF_SIZE_PF)
 	{
 		crawler->buf[i] = chr;
 		crawler->size++;
 	}
-	else if (crawler->size == BUF_SIZE_PF)
+	else
 	{
 		new = pf_bufnew(BUF_SIZE_PF);
 		ft_bzero(new, BUF_SIZE_PF);
 		ft_bufadd(&crawler, new);
+        crawler = crawler->next;
 		fill_buf_chr(&crawler, chr);
 	}
 }
@@ -91,7 +89,6 @@ int		print_buf(t_pfbuf **head)
 {
 	int 	len;
 	t_pfbuf *crawler;
-	t_pfbuf *tmp;
 
 	len = 0;
 	crawler = *head;
@@ -100,14 +97,13 @@ int		print_buf(t_pfbuf **head)
 		len += write(1, crawler->buf, crawler->size);
 		crawler = crawler->next;
 	}
-	crawler = *head;
-	while (crawler)
-	{
-		ft_strdel(&(crawler->buf));
-		tmp = crawler->next;
-		free(crawler);
-		crawler = tmp;
-	}
+    while (*head)
+    {
+        ft_strdel(&((*head)->buf));
+        crawler = (*head)->next;
+        free(*head);
+        *head = crawler;
+    }
 	*head = NULL;
 	return (len);
 }
