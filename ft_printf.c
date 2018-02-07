@@ -12,37 +12,35 @@
 
 #include "libftprintf.h"
 
-int		prntf_parse(t_pfbuf **res, char *format, va_list ap)
+int		prntf_parse(t_pfbuf **res, char *format, va_list ap, t_conv	*conv)
 {
 	t_spec_elem		spec;
 	int				step;
 	int				i;
-	t_conv			*conv;
 
 	step = check_init_specification(format, &spec);
-	conv = init_conversion();
 	i = 0;
 	while (conv[i].letter != spec.cletter && conv[i].letter != '0')
 		i++;
 	if (conv[i].letter == spec.cletter)
 		conv[i].make(res, spec, ap);
 	else if (spec.cletter != '\0')
-		fill_buf_chr(res, spec.cletter);
-	ft_memdel((void**)&conv);
+		convert_chr(res, spec, ap);
 	return (step);
 }
 
 void	prntf_runner(t_pfbuf **res, char *format, va_list ap)
 {
-	int step;
+	int 	step;
+	t_conv	*conv;
 
-	step = 0;
+	conv = init_conversion();
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			step = prntf_parse(res, format, ap);
+			step = prntf_parse(res, format, ap, conv);
 			format += step;
 			if (!step)
 				return ;
@@ -53,6 +51,7 @@ void	prntf_runner(t_pfbuf **res, char *format, va_list ap)
 			format++;
 		}
 	}
+	ft_memdel((void**)&conv);
 }
 
 int		ft_printf(const char *restrict format, ...)

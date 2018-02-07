@@ -52,13 +52,8 @@ typedef struct 		s_conv
 	t_convert		make;
 }					t_conv;
 
-typedef struct      s_var
-{
-
-}                   t_var;
-
 int					ft_printf(const char *restrict format, ...);
-int					prntf_parse(t_pfbuf **res, char *format, va_list ap);
+int					prntf_parse(t_pfbuf **res, char *format, va_list ap, t_conv	*conv);
 int					check_init_specification(char *format, t_spec_elem *spec);
 void				init_spec2zero(t_spec_elem *spec);
 void				check_init_flags(char *format, int *step, t_spec_elem *spec);

@@ -34,7 +34,7 @@ void	convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		convert_unichr(res, spec, ap);
 	else
 	{
-		c = (spec.cletter == '%') ? '%' : va_arg(ap, int);
+		c = (spec.cletter == 'c') ? va_arg(ap, int) : spec.cletter;
         if (!spec.flags.minus)
         {
             push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
@@ -79,12 +79,16 @@ void	convert_ptr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		push_padding(res, (spec.fwidth > len) ? spec.fwidth - len : 0, spec, 0);
 		fill_buf_chr(res, '0');
 		fill_buf_chr(res, 'x');
+		if (!un && spec.precision == 0)
+			return ;
+		push_padding(res, spec.precision > 0 ? spec.precision - len : 0, spec, 1);
 		push_unumb(res, base_caps[0], un, base_caps[1]);
 	}
 	else
 	{
 		fill_buf_chr(res, '0');
 		fill_buf_chr(res, 'x');
+		push_padding(res, spec.precision > 0 ? spec.precision - len : 0, spec, 1);
 		push_unumb(res, base_caps[0], un, base_caps[1]);
 		push_padding(res, (spec.fwidth > len) ? spec.fwidth - len : 0, spec, 0);
 	}
