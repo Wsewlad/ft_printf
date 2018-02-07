@@ -30,20 +30,22 @@ void	convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 {
 	char c;
 
-	if (!ft_strcmp(spec.smod, "l"))
+	if (!ft_strcmp(spec.smod, "l") && spec.cletter == 'c')
 		convert_unichr(res, spec, ap);
 	else
 	{
 		c = (spec.cletter == 'c') ? va_arg(ap, int) : spec.cletter;
         if (!spec.flags.minus)
         {
-            push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
+            push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec,
+						 spec.precision != -1 ? 1 : 0);
             fill_buf_chr(res, c);
         }
         else
         {
             fill_buf_chr(res, c);
-            push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
+            push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec,
+						 spec.precision != -1 ? 1 : 0);
         }
 	}
 }

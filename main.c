@@ -23,8 +23,8 @@ int		main(void)
 	var = 0;
 	//ret = 0;
 	//ret2 = -42;
-    ret = ft_printf("{%10R}");
-    ret2 = printf("{%10R}");
+    ret = ft_printf("{%05.s}\n", 0);
+    ret2 = printf("{%05.s}\n", 0);
     printf("ret1: %d\nret2: %d\n", ret, ret2);
     return (0);
 }
