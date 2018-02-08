@@ -46,7 +46,7 @@ void		push_unumb(t_pfbuf **res, int *base_caps, unsigned long long un,
 		prec = spec.precision > len ? spec.precision - len : 0;
 	else if (spec.flags.zero && !spec.flags.minus)
 		prec = spec.fwidth > len ? spec.fwidth - len : 0;
-	prec = prec - spec.flags.space - spec.flags.plus - spec.flags.hash;
+	prec = prec - /*spec.flags.space - spec.flags.plus - */spec.flags.hash;
 	push_padding(res, prec > 0 ? prec : 0, spec, 1);
 	pow = (!un && !spec.precision) ? 0 : pow;
 	while (pow)
@@ -60,22 +60,22 @@ void		push_unumb(t_pfbuf **res, int *base_caps, unsigned long long un,
 
 static void	push_flags(t_pfbuf **res, t_spec_elem spec, unsigned long long un, int *base_caps)
 {
-	if (spec.cletter != 'u' && spec.flags.plus)
+	/*if (un && spec.cletter != 'u' && spec.flags.plus)
 		fill_buf_chr(res, '+');
 	else if (spec.cletter != 'u' && spec.flags.space && !spec.flags.plus)
-		fill_buf_chr(res, ' ');
+		fill_buf_chr(res, ' ');*/
 	if (un && spec.flags.hash && (spec.cletter == 'x' || spec.cletter == 'X'))
 	{
 		fill_buf_chr(res, '0');
 		fill_buf_chr(res, spec.cletter == 'x' ? 'x' : 'X');
 	}
-	else if (spec.flags.hash && (spec.cletter == 'o' || spec.cletter == 'O'))
+	else if (un && spec.flags.hash && (spec.cletter == 'o' || spec.cletter == 'O'))
 		fill_buf_chr(res, '0');
-	if (spec.precision != -1)
+	/*if (spec.precision != -1)
 	{
 		spec.flags.space = 0;
 		spec.flags.plus = 0;
-	}
+	}*/
 	push_unumb(res, base_caps, un, spec);
 }
 
@@ -91,7 +91,7 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
 		spec.flags.hash = (spec.cletter == 'x' || spec.cletter == 'X') ? 2 : 1;
 	else
 		spec.flags.hash = 0;
-	len = len + spec.flags.plus + spec.flags.space + spec.flags.hash;
+	len = len + /*spec.flags.plus + spec.flags.space + */spec.flags.hash;
 	width = (spec.fwidth > len && (!spec.flags.zero || spec.flags.minus
 								   || spec.precision != -1)) ? spec.fwidth : len;
 	if (spec.flags.minus)
