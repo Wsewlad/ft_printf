@@ -96,7 +96,7 @@ void				push_str(t_pfbuf **head, int len, char *str);
 void				push_padding(t_pfbuf **head, int len, t_spec_elem spec, int zero);
 int					find_ulen(unsigned long long un, int base);
 //void                push_padd_chr(char c, t_pfbuf **res, t_spec_elem spec);
-void		        push_unumb(t_pfbuf **res, int base, unsigned long long un, int caps);
+void		        push_unumb(t_pfbuf **res, int *base_caps, unsigned long long un, t_spec_elem spec);
 void				ulltoa_base_buf(t_pfbuf **res, unsigned long long un, int *base_caps, t_spec_elem spec);
 void				lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec);
 

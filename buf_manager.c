@@ -50,7 +50,6 @@ void	fill_buf_str(t_pfbuf **head, char *str, t_spec_elem spec)
 	int prec;
 
 	len = ft_strlen(str);
-	prec = 0;
 	if (spec.precision != -1)
 		len = (spec.precision < len) ? spec.precision : len;
 	prec = (spec.fwidth > len && spec.flags.zero && !spec.flags.minus) ?

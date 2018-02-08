@@ -40,17 +40,10 @@ static void	push_numb(t_pfbuf **res, unsigned long long un, t_spec_elem spec, in
 	len = find_len(un);
 	prec = 0;
 	if (spec.precision != -1)
-	{
 		prec = spec.precision > len ? spec.precision - len : 0;
-		spec.flags.space = 0;
-		spec.flags.plus = 0;
-		min = 0;
-	}
 	else if (spec.flags.zero && !spec.flags.minus)
 		prec = spec.fwidth > len ? spec.fwidth - len : 0;
-	//printf("prec: %d\n", prec);
 	prec = prec - spec.flags.space - spec.flags.plus - min;
-	//printf("prec2: %d\n", prec);
 	push_padding(res, prec > 0 ? prec : 0, spec, 1);
 	pow = (!un && !spec.precision) ? 0 : pow;
 	while (pow)
@@ -61,7 +54,7 @@ static void	push_numb(t_pfbuf **res, unsigned long long un, t_spec_elem spec, in
 	}
 }
 
-void	push_flags(t_pfbuf **res, t_spec_elem spec, int min, unsigned long long un)
+static void	push_flags(t_pfbuf **res, t_spec_elem spec, int min, unsigned long long un)
 {
 	if (spec.flags.plus && !min)
 		fill_buf_chr(res, '+');
@@ -69,8 +62,12 @@ void	push_flags(t_pfbuf **res, t_spec_elem spec, int min, unsigned long long un)
 		fill_buf_chr(res, ' ');
 	if (min)
 		fill_buf_chr(res, '-');
-	//min = spec.precision != -1 ? 0 : min;
-	//spec.flags.space = spec.precision != -1 ? 0 : spec.flags.space;
+	if (spec.precision != -1)
+	{
+		spec.flags.space = 0;
+		spec.flags.plus = 0;
+		min = 0;
+	}
 	push_numb(res, un, spec, min);
 }
 
@@ -84,15 +81,11 @@ void		lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec)
 	min = n < 0 ? 1 : 0;
 	un = n < 0 ? -n : n;
 	len = (!un && !spec.precision) ? 0 : find_len(un);
-	//printf("len1: %d\n", len);
 	spec.flags.plus = min ? 0 : spec.flags.plus;
 	spec.flags.space = min ? 0 : spec.flags.space;
 	len = (spec.precision > len/* && !spec.flags.zero*/) ? spec.precision : len;
-	//printf("len2: %d\n", len);
 	len = len + min + spec.flags.plus + spec.flags.space;
-	//printf("len3: %d\n", len);
 	width = (spec.fwidth > len && (!spec.flags.zero || spec.flags.minus || spec.precision != -1)) ? spec.fwidth : len;
-	//printf("width: %d, len4: %d\n", width, len);
 	if (spec.flags.minus)
 		push_flags(res, spec, min, un);
 	while (width > len)

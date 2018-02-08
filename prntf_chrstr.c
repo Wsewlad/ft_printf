@@ -84,14 +84,14 @@ void	convert_ptr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		if (!un && spec.precision == 0)
 			return ;
 		push_padding(res, spec.precision > 0 ? spec.precision - len : 0, spec, 1);
-		push_unumb(res, base_caps[0], un, base_caps[1]);
+		push_unumb(res, base_caps, un, spec);
 	}
 	else
 	{
 		fill_buf_chr(res, '0');
 		fill_buf_chr(res, 'x');
 		push_padding(res, spec.precision > 0 ? spec.precision - len : 0, spec, 1);
-		push_unumb(res, base_caps[0], un, base_caps[1]);
+		push_unumb(res, base_caps, un, spec);
 		push_padding(res, (spec.fwidth > len) ? spec.fwidth - len : 0, spec, 0);
 	}
 }
