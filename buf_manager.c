@@ -52,11 +52,9 @@ void	fill_buf_str(t_pfbuf **head, char *str, t_spec_elem spec)
 	len = ft_strlen(str);
 	prec = 0;
 	if (spec.precision != -1)
-	{
 		len = (spec.precision < len) ? spec.precision : len;
-		prec = (spec.fwidth > len && spec.flags.zero && !spec.flags.minus) ?
+	prec = (spec.fwidth > len && spec.flags.zero && !spec.flags.minus) ?
 			 spec.fwidth - len : 0;
-	}
 	padd = (spec.fwidth > len && !spec.flags.zero) ? spec.fwidth - len : 0;
 	if (!spec.flags.minus)
 	{
@@ -87,7 +85,6 @@ void	fill_buf_chr(t_pfbuf **head, char chr)
 	else
 	{
 		new = pf_bufnew(BUF_SIZE_PF);
-		ft_bzero(new, BUF_SIZE_PF);
 		ft_bufadd(&crawler, new);
         crawler = crawler->next;
 		fill_buf_chr(&crawler, chr);

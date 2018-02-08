@@ -17,14 +17,82 @@ int		main(void)
 {
 	int		ret;
 	int		ret2;
-	unsigned int		var;
+	int		var;
+	int 	var2;
 
 	char* l = setlocale(LC_ALL, "");
-	var = 0;
+	var = 42;
+	var2 = -42;
 	//ret = 0;
 	//ret2 = -42;
-    ret = ft_printf("{%05.s}\n", 0);
-    ret2 = printf("{%05.s}\n", 0);
-    printf("ret1: %d\nret2: %d\n", ret, ret2);
+	ret = ft_printf("%12d\n", var);
+	ret2 = printf("%12d\n", var);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+	ret = ft_printf("%12d\n", var2);
+	ret2 = printf("%12d\n", var2);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	ret = ft_printf("%012d\n", var);
+	ret2 = printf("%012d\n", var);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+	ret = ft_printf("%012d\n", var2);
+	ret2 = printf("%012d\n", var2);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	ret = ft_printf("% 012d\n", var);
+	ret2 = printf("% 012d\n", var);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+	ret = ft_printf("% 012d\n", var2);
+	ret2 = printf("% 012d\n", var2);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	ret = ft_printf("%+12d\n", var);
+	ret2 = printf("%+12d\n", var);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+	ret = ft_printf("%+12d\n", var2);
+	ret2 = printf("%+12d\n", var2);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	ret = ft_printf("%+012d\n", var);
+	ret2 = printf("%+012d\n", var);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+	ret = ft_printf("%+012d\n", var2);
+	ret2 = printf("%+012d\n", var2);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	ret = ft_printf("%-12d\n", var);
+	ret2 = printf("%-12d\n", var);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+	ret = ft_printf("%-12d\n", var2);
+	ret2 = printf("%-12d\n", var2);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	ret = ft_printf("%- 12d\n", var);
+	ret2 = printf("%- 12d\n", var);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+	ret = ft_printf("%- 12d\n", var2);
+	ret2 = printf("%- 12d\n", var2);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	ret = ft_printf("%-+12d\n", var);
+	ret2 = printf("%-+12d\n", var);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+	ret = ft_printf("%-+12d\n", var2);
+	ret2 = printf("%-+12d\n", var2);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	ret = ft_printf("%12.4d\n", var);
+	ret2 = printf("%12.4d\n", var);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+	ret = ft_printf("%12.4d\n", var2);
+	ret2 = printf("%12.4d\n", var2);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	ret = ft_printf("%-12.4d\n", var);
+	ret2 = printf("%-12.4d\n", var);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+	ret = ft_printf("%-12.4d\n", var2);
+	ret2 = printf("%-12.4d\n", var2);
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
     return (0);
 }

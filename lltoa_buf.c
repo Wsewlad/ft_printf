@@ -27,16 +27,24 @@ static int	find_len(unsigned long long un)
 	return (len);
 }
 
-static void	push_numb(t_pfbuf **res, unsigned long long un, int len, \
-					int min)
+static void	push_numb(t_pfbuf **res, unsigned long long un, t_spec_elem spec, int min)
 {
 	unsigned long long	pow;
+	int 				len;
+	int 				prec;
 
+	len = find_len(un);
 	pow = 1;
 	while ((len--) - 1)
 		pow *= 10;
-	if (min)
-		fill_buf_chr(res, '-');
+	len = find_len(un);
+	prec = 0;
+	if (spec.precision != -1)
+		prec = spec.precision > len ? spec.precision - len : 0;
+	else if (spec.flags.zero)
+		prec = spec.fwidth > len ? spec.fwidth - len : 0;
+	prec = prec - spec.flags.space - spec.flags.plus - min;
+	push_padding(res, prec > 0 ? prec : 0, spec, 1);
 	while (pow)
 	{
 		fill_buf_chr(res, (un / pow) + '0');
@@ -45,83 +53,41 @@ static void	push_numb(t_pfbuf **res, unsigned long long un, int len, \
 	}
 }
 
-void	culc_prec_padd(int *prec, int *padd, int len, t_spec_elem spec)
+void	push_flags(t_pfbuf **res, t_spec_elem spec, int min, unsigned long long un)
 {
-	int n;
-	int min;
-
-	min = *prec;
-    *prec = (spec.precision > len - 1) ? spec.precision - len : 0;
-    *prec = (spec.flags.zero && !spec.flags.minus && spec.fwidth > len + *prec && \
-    spec.precision == -1) ? *prec + (spec.fwidth - (len + *prec)) : *prec;
-    n = (spec.flags.plus || spec.flags.space || min) ? 1 : 0;
-    if (spec.cletter == 'X' || spec.cletter == 'x' || spec.cletter == 'o'
-        || spec.cletter == 'O')
-    {
-        n = (spec.flags.hash > 0) ? 1 : n;
-        *prec = (spec.flags.hash > 0) ? *prec - 1 : *prec;
-    }
-    *prec = (spec.flags.zero && n && !spec.flags.minus) ? *prec - 1 : *prec;
-    *prec = (spec.flags.zero && spec.precision != -1 && min) ? *prec + 1 : *prec;
-    *padd = (spec.fwidth > len + *prec) ? (spec.fwidth - (len + *prec + n)) : 0;
-    if (spec.flags.hash > 0 && (spec.cletter == 'X' || spec.cletter == 'x' || spec.cletter == 'o'
-        || spec.cletter == 'O'))
-        *padd = (spec.cletter == 'x' || spec.cletter == 'X') ? *padd - 2 : *padd - 1;
-
-}
-
-void	push_prec_flags(t_pfbuf **res, t_spec_elem spec, int *min, int prec)
-{
-    if (spec.cletter == 'd' || spec.cletter == 'D' || spec.cletter == 'i')
-    {
-        if (spec.flags.plus && !*min)
-            fill_buf_chr(res, '+');
-        if (spec.flags.space && !spec.flags.plus && !*min)
-            fill_buf_chr(res, ' ');
-    }
-	if (*min)
-	{
+	if (spec.flags.plus && !min)
+		fill_buf_chr(res, '+');
+	if (spec.flags.space && !spec.flags.plus && !min)
+		fill_buf_chr(res, ' ');
+	if (min)
 		fill_buf_chr(res, '-');
-		*min = 0;
-	}
-    if (spec.flags.hash > 0)
-    {
-        if (spec.cletter == 'o' || spec.cletter == 'O')
-            fill_buf_chr(res, '0');
-        else if (spec.cletter == 'x' || spec.cletter == 'X')
-        {
-            fill_buf_chr(res, '0');
-            fill_buf_chr(res, (spec.cletter == 'x') ? 'x' : 'X');
-        }
-    }
-	push_padding(res, prec > 0 ? prec : 0, spec, 1);
+	spec.flags.space = min ? 0 : spec.flags.space;
+	min = spec.precision != -1 ? 0 : min;
+	push_numb(res, un, spec, min);
 }
 
 void		lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec)
 {
-	unsigned long long	un;
 	int					len;
 	int					min;
-	int					prec;
-	int					padd;
+	int 				width;
+	unsigned long long	un;
 
-	min = (n < 0) ? 1 : 0;
-	un = (n < 0) ? -n : n;
-	len = (!un && spec.precision == 0) ? 0 : find_len(un);
-	prec = min;
-	culc_prec_padd(&prec, &padd, len, spec);
-	if (!spec.flags.minus)
+	min = n < 0 ? 1 : 0;
+	un = n < 0 ? -n : n;
+	len = find_len(un);
+	spec.flags.plus = min ? 0 : spec.flags.plus;
+	len = (spec.precision > len && !spec.flags.zero) ? spec.precision : len;
+	len = len + min + spec.flags.plus;
+	width = (spec.fwidth > len && !spec.flags.zero) ? spec.fwidth : len;
+
+	if (spec.flags.minus)
+		push_flags(res, spec, min, un);
+	while (width > len)
 	{
-		push_padding(res, padd, spec, 0);
-		push_prec_flags(res, spec, &min, prec);
-		if (spec.precision == 0 && !un)
-			return ;
-		push_numb(res, un, len, min);
-		return ;
+		fill_buf_chr(res, ' ');
+		width--;
 	}
-	push_prec_flags(res, spec, &min, prec);
-	if (spec.precision == 0 && !un)
-		return ;
-	push_numb(res, un, len, min);
-	push_padding(res, padd, spec, 0);
+	if (!spec.flags.minus)
+		push_flags(res, spec, min, un);
 }
