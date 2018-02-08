@@ -66,8 +66,8 @@ int		main(void)
 	ret2 = printf("%#o\n", var);
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%#08o\n", var);
-	ret2 = printf("%#08o\n", var);
+	ret = ft_printf("%+u\n", 4294967295);
+	ret2 = printf("%+u\n", 4294967295);
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
     return (0);
 }

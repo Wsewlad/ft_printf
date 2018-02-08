@@ -60,16 +60,16 @@ void		push_unumb(t_pfbuf **res, int *base_caps, unsigned long long un,
 
 static void	push_flags(t_pfbuf **res, t_spec_elem spec, unsigned long long un, int *base_caps)
 {
-	if (spec.flags.plus)
+	if (spec.cletter != 'u' && spec.flags.plus)
 		fill_buf_chr(res, '+');
-	else if (spec.flags.space && !spec.flags.plus)
+	else if (spec.cletter != 'u' && spec.flags.space && !spec.flags.plus)
 		fill_buf_chr(res, ' ');
-	if (spec.cletter == 'x' || spec.cletter == 'X')
+	if (un && spec.flags.hash && (spec.cletter == 'x' || spec.cletter == 'X'))
 	{
 		fill_buf_chr(res, '0');
 		fill_buf_chr(res, spec.cletter == 'x' ? 'x' : 'X');
 	}
-	else if (spec.cletter == 'o' || spec.cletter == 'O')
+	else if (spec.flags.hash && (spec.cletter == 'o' || spec.cletter == 'O'))
 		fill_buf_chr(res, '0');
 	if (spec.precision != -1)
 	{
@@ -87,8 +87,10 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
 
 	len = (!un && !spec.precision) ? 0 : find_ulen(un, base_caps[0]);
 	len = (spec.precision > len) ? spec.precision : len;
-	if (spec.flags.hash)
+	if (spec.flags.hash && spec.cletter != 'u')
 		spec.flags.hash = (spec.cletter == 'x' || spec.cletter == 'X') ? 2 : 1;
+	else
+		spec.flags.hash = 0;
 	len = len + spec.flags.plus + spec.flags.space + spec.flags.hash;
 	width = (spec.fwidth > len && (!spec.flags.zero || spec.flags.minus
 								   || spec.precision != -1)) ? spec.fwidth : len;
@@ -101,6 +103,5 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
 	}
 	if (!spec.flags.minus)
 		push_flags(res, spec, un, base_caps);
-
 }
 
