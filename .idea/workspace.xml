@@ -12,8 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae8892b7-2d32-4288-ae27-2a6d916bfa50" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/buf_manager.c" afterPath="$PROJECT_DIR$/buf_manager.c" />
-      <change beforePath="$PROJECT_DIR$/lltoa_buf.c" afterPath="$PROJECT_DIR$/lltoa_buf.c" />
+      <change beforePath="$PROJECT_DIR$/a.out" afterPath="$PROJECT_DIR$/a.out" />
       <change beforePath="$PROJECT_DIR$/main.c" afterPath="$PROJECT_DIR$/main.c" />
       <change beforePath="$PROJECT_DIR$/ulltoa_base_buf.c" afterPath="$PROJECT_DIR$/ulltoa_base_buf.c" />
     </list>
@@ -33,8 +32,8 @@
           <file leaf-file-name="libftprintf.h" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/libftprintf.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2254">
-                  <caret line="98" column="0" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+                <state relative-caret-position="783">
+                  <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -43,7 +42,7 @@
           <file leaf-file-name="ft_printf.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ft_printf.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1219">
+                <state relative-caret-position="878">
                   <caret line="53" column="29" lean-forward="false" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
                   <folding />
                 </state>
@@ -53,8 +52,8 @@
           <file leaf-file-name="main.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="39" column="25" lean-forward="false" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+                <state relative-caret-position="788">
+                  <caret line="69" column="21" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
                   <folding>
                     <element signature="e#892#916#0" expanded="true" />
                   </folding>
@@ -66,7 +65,7 @@
             <entry file="file://$PROJECT_DIR$/buf_manager.c">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="580">
-                  <caret line="52" column="29" lean-forward="true" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+                  <caret line="52" column="29" lean-forward="false" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
@@ -77,16 +76,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="322">
                   <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="20" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ulltoa_base_buf.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ulltoa_base_buf.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="594">
-                  <caret line="50" column="45" lean-forward="true" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
                   <folding />
                 </state>
               </provider>
@@ -106,11 +95,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="lltoa_buf.c" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/lltoa_buf.c">
+          <file leaf-file-name="ulltoa_base_buf.c" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/ulltoa_base_buf.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="582">
-                  <caret line="50" column="25" lean-forward="false" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
+                <state relative-caret-position="-18">
+                  <caret line="48" column="70" lean-forward="false" selection-start-line="48" selection-start-column="70" selection-end-line="48" selection-end-column="70" />
                   <folding />
                 </state>
               </provider>
@@ -119,7 +108,7 @@
           <file leaf-file-name="check_init_specification2.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/check_init_specification2.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1610">
+                <state relative-caret-position="578">
                   <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
                   <folding />
                 </state>
@@ -129,8 +118,8 @@
           <file leaf-file-name="prntf_chrstr.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/prntf_chrstr.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1288">
-                  <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+                <state relative-caret-position="568">
+                  <caret line="92" column="36" lean-forward="false" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -172,14 +161,14 @@
         <option value="$PROJECT_DIR$/prntf_unicode.c" />
         <option value="$PROJECT_DIR$/prntf_unicode2.c" />
         <option value="$PROJECT_DIR$/check_init_specification2.c" />
-        <option value="$PROJECT_DIR$/prntf_chrstr.c" />
         <option value="$PROJECT_DIR$/ft_printf.c" />
-        <option value="$PROJECT_DIR$/libftprintf.h" />
         <option value="$PROJECT_DIR$/flag_manager.c" />
         <option value="$PROJECT_DIR$/lltoa_buf.c" />
-        <option value="$PROJECT_DIR$/ulltoa_base_buf.c" />
         <option value="$PROJECT_DIR$/buf_manager.c" />
+        <option value="$PROJECT_DIR$/libftprintf.h" />
+        <option value="$PROJECT_DIR$/prntf_chrstr.c" />
         <option value="$PROJECT_DIR$/main.c" />
+        <option value="$PROJECT_DIR$/ulltoa_base_buf.c" />
       </list>
     </option>
   </component>
@@ -331,12 +320,12 @@
       <workItem from="1518003230203" duration="7088000" />
       <workItem from="1518025335995" duration="3864000" />
       <workItem from="1518079779037" duration="13393000" />
-      <workItem from="1518101207255" duration="6728000" />
+      <workItem from="1518101207255" duration="8025000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264156000" />
+    <option name="totallyTimeSpent" value="265453000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="6" y="23" width="1696" height="1336" extended-state="0" />
@@ -594,22 +583,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ft_printf.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1219">
-          <caret line="53" column="29" lean-forward="false" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libftprintf.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2254">
-          <caret line="98" column="0" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flag_manager.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -618,18 +591,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/check_init_specification2.c">
+    <entry file="file://$PROJECT_DIR$/buf_manager.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1610">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state relative-caret-position="580">
+          <caret line="52" column="29" lean-forward="false" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/prntf_chrstr.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1288">
-          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        <state relative-caret-position="568">
+          <caret line="92" column="36" lean-forward="false" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libftprintf.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="783">
+          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ft_printf.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="878">
+          <caret line="53" column="29" lean-forward="false" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -642,29 +631,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ulltoa_base_buf.c">
+    <entry file="file://$PROJECT_DIR$/check_init_specification2.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="50" column="45" lean-forward="true" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buf_manager.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="52" column="29" lean-forward="true" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+        <state relative-caret-position="578">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="39" column="25" lean-forward="false" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+        <state relative-caret-position="788">
+          <caret line="69" column="21" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
           <folding>
             <element signature="e#892#916#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ulltoa_base_buf.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-18">
+          <caret line="48" column="70" lean-forward="false" selection-start-line="48" selection-start-column="70" selection-end-line="48" selection-end-column="70" />
+          <folding />
         </state>
       </provider>
     </entry>
