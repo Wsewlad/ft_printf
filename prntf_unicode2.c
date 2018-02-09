@@ -62,22 +62,15 @@ static void	get_four_bytes(t_pfbuf **res, unsigned int u)
 
 void		get_symbol(t_pfbuf **res, unsigned int numb)
 {
-	int				bits;
-	unsigned int	n;
+	int				bytes;
 
-	bits = 0;
-	n = numb;
-	while (n)
-	{
-		n /= 2;
-		bits++;
-	}
-	if (bits <= 7)
+	bytes = count_bytes(numb);
+	if (bytes == 1)
 		fill_buf_chr(res, (char)numb);
-	else if (bits <= 11)
+	else if (bytes == 2)
 		get_two_bytes(res, numb);
-	else if (bits <= 16)
+	else if (bytes == 3)
 		get_three_bytes(res, numb);
-	else if (bits <= 21)
+	else if (bytes == 4)
 		get_four_bytes(res, numb);
 }

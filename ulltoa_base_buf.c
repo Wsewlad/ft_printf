@@ -72,7 +72,6 @@ static void	push_flags(t_pfbuf **res, t_spec_elem spec, unsigned long long un,
 		spec.flags.hash = (spec.flags.hash == 2 && spec.precision != -1) ? 0 :
 						  spec.flags.hash;
 		push_unumb(res, base_caps, un, spec);
-
 	}
 }
 

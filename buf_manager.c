@@ -47,18 +47,17 @@ void	fill_buf_str(t_pfbuf **head, char *str, t_spec_elem spec)
 {
 	int len;
 	int padd;
-	int prec;
 
 	len = ft_strlen(str);
 	if (spec.precision != -1)
 		len = (spec.precision < len) ? spec.precision : len;
-	prec = (spec.fwidth > len && spec.flags.zero && !spec.flags.minus) ?
-			 spec.fwidth - len : 0;
-	padd = (spec.fwidth > len && !spec.flags.zero) ? spec.fwidth - len : 0;
+	padd = (spec.fwidth > len) ? spec.fwidth - len : 0;
 	if (!spec.flags.minus)
 	{
-		push_padding(head, padd, spec, 0);
-		push_padding(head, prec, spec, 1);
+		if (spec.flags.zero && spec.precision == 0 && !len)
+			push_padding(head, padd, spec, 1);
+		else
+			push_padding(head, padd, spec, 0);
 		push_str(head, len, str);
 	}
 	else

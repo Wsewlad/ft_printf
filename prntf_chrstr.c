@@ -12,20 +12,6 @@
 
 #include "libftprintf.h"
 
-/*void	push_padd_chr(char c, t_pfbuf **res, t_spec_elem spec)
-{
-    if (!spec.flags.minus)
-    {
-        push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
-        fill_buf_chr(res, c);
-    }
-    else
-    {
-        fill_buf_chr(res, c);
-        push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
-    }
-}*/
-
 void	convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 {
 	char c;
@@ -65,53 +51,37 @@ void	convert_str(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	}
 }
 
+static void	push_flags(t_pfbuf **res, t_spec_elem spec, unsigned long long un,
+						  int *base_caps)
+{
+	if (spec.precision == -1)
+		spec.flags.hash = 2;
+	fill_buf_chr(res, '0');
+	fill_buf_chr(res, 'x');
+	push_unumb(res, base_caps, un, spec);
+}
+
 void	convert_ptr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 {
 	int				base_caps[2];
 	int 			len;
+	int				width;
 	unsigned long	un;
 
 	base_caps[0] = 16;
 	base_caps[1] = 0;
 	un = va_arg(ap, unsigned long);
 	len = find_ulen(un, 16) + 2;
-
+	len = (spec.precision > len) ? spec.precision : len;
+	width = (spec.fwidth > len && (!spec.flags.zero || spec.flags.minus
+								   || spec.precision != -1)) ? spec.fwidth : len;
+	if (spec.flags.minus)
+		push_flags(res, spec, un, base_caps);
+	while (width > len)
+	{
+		fill_buf_chr(res, ' ');
+		width--;
+	}
 	if (!spec.flags.minus)
-	{
-		push_padding(res, (spec.fwidth > len) ? spec.fwidth - len : 0, spec, 0);
-		fill_buf_chr(res, '0');
-		fill_buf_chr(res, 'x');
-		if (!un && spec.precision == 0)
-			return ;
-		push_padding(res, spec.precision > 0 ? spec.precision - len : 0, spec, 1);
-		push_unumb(res, base_caps, un, spec);
-	}
-	else
-	{
-		fill_buf_chr(res, '0');
-		fill_buf_chr(res, 'x');
-		push_padding(res, spec.precision > 0 ? spec.precision - len : 0, spec, 1);
-		push_unumb(res, base_caps, un, spec);
-		push_padding(res, (spec.fwidth > len) ? spec.fwidth - len : 0, spec, 0);
-	}
+		push_flags(res, spec, un, base_caps);
 }
-
-/*void	convert_prcnt(t_pfbuf **res, t_spec_elem spec, va_list ap)
-{
-	char	c;
-
-	if (ap)
-	{
-		c = '%';
-		if (!spec.flags.minus)
-		{
-			push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
-			fill_buf_chr(res, c);
-		}
-		else
-		{
-			fill_buf_chr(res, c);
-			push_padding(res, spec.fwidth ? spec.fwidth - 1 : spec.fwidth, spec, 0);
-		}
-	}
-}*/

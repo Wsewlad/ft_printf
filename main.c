@@ -26,48 +26,54 @@ int		main(void)
 	//ret = 0;
 	//ret2 = -42;
 
-	ret = ft_printf("%012u\n", var);
-	ret2 = printf("%012u\n", var);
+	/*ret = ft_printf("%4.3S\n", L"我是一只猫。");
+	ret2 = printf("%4.3S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%#12u\n", var);
-	ret2 = printf("%#12u\n", var);
+	ret = ft_printf("%.3S\n", L"我是一只猫。");
+	ret2 = printf("%.3S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%#012u\n", var);
-	ret2 = printf("%#012u\n", var);
+	ret = ft_printf("%4S\n", L"我是一只猫。");
+	ret2 = printf("%4S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%-12u\n", var);
-	ret2 = printf("%-12u\n", var);
+	ret = ft_printf("%15.3S\n", L"我是一只猫。");
+	ret2 = printf("%15.3S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%-#12u\n", var);
-	ret2 = printf("%-#12u\n", var);
+	ret = ft_printf("{%05.S}\n", L"42 c est cool");
+	ret2 = printf("{%05.S}\n", L"42 c est cool");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%12.4u\n", var);
-	ret2 = printf("%12.4u\n", var);
+	ret = ft_printf("%030S\n", L"我是一只猫。");
+	ret2 = printf("%030S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%-12.4d\n", var);
-	ret2 = printf("%-12.4u\n", var);
+	ret = ft_printf("%-30S\n", L"我是一只猫。");
+	ret2 = printf("%-30S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%#x\n", var);
-	ret2 = printf("%#x\n", var);
+	ret = ft_printf("%30S\n", L"我是一只猫。");
+	ret2 = printf("%30S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%#X\n", var);
-	ret2 = printf("%#X\n", var);
+	ret = ft_printf("%.3S\n", L"我是一只猫。");
+	ret2 = printf("%.3S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%#o\n", var);
-	ret2 = printf("%#o\n", var);
+	ret = ft_printf("%.6S\n", L"我是一只猫。");
+	ret2 = printf("%.6S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("{%#.5x}\n", 1);
-	ret2 = printf("{%#.5x}\n", 1);
+	ret = ft_printf("%.4S\n", L"我是一只猫。");
+	ret2 = printf("%.4S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
-    return (0);
+
+	ret = ft_printf("%15.4S\n", L"我是一只猫。");
+	ret2 = printf("%15.4S\n", L"我是一只猫。");
+	printf("ret1: %d\nret2: %d\n", ret, ret2);*/
+
+	system("leaks a.out");
+	return (0);
 }
