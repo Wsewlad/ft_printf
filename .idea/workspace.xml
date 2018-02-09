@@ -12,15 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae8892b7-2d32-4288-ae27-2a6d916bfa50" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/a.out" afterPath="$PROJECT_DIR$/a.out" />
-      <change beforePath="$PROJECT_DIR$/buf_manager.c" afterPath="$PROJECT_DIR$/buf_manager.c" />
-      <change beforePath="$PROJECT_DIR$/libftprintf.h" afterPath="$PROJECT_DIR$/libftprintf.h" />
-      <change beforePath="$PROJECT_DIR$/main.c" afterPath="$PROJECT_DIR$/main.c" />
-      <change beforePath="$PROJECT_DIR$/prntf_chrstr.c" afterPath="$PROJECT_DIR$/prntf_chrstr.c" />
       <change beforePath="$PROJECT_DIR$/prntf_unicode.c" afterPath="$PROJECT_DIR$/prntf_unicode.c" />
-      <change beforePath="$PROJECT_DIR$/prntf_unicode2.c" afterPath="$PROJECT_DIR$/prntf_unicode2.c" />
-      <change beforePath="$PROJECT_DIR$/ulltoa_base_buf.c" afterPath="$PROJECT_DIR$/ulltoa_base_buf.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,11 +49,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main.c" pinned="false" current-in-tab="true">
+          <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.c">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="715">
-                  <caret line="74" column="48" lean-forward="true" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+                  <caret line="74" column="48" lean-forward="false" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
                   <folding>
                     <element signature="e#892#916#0" expanded="true" />
                   </folding>
@@ -69,10 +61,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="buf_manager.c" pinned="false" current-in-tab="false">
+          <file leaf-file-name="buf_manager.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/buf_manager.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="946">
+                <state relative-caret-position="877">
                   <caret line="59" column="46" lean-forward="false" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
                   <folding />
                 </state>
@@ -126,8 +118,8 @@
           <file leaf-file-name="prntf_unicode.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/prntf_unicode.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="69">
-                  <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+                <state relative-caret-position="571">
+                  <caret line="97" column="9" lean-forward="true" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
                   <folding />
                 </state>
               </provider>
@@ -189,7 +181,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="6" />
     <option name="y" value="23" />
-    <option name="width" value="1659" />
+    <option name="width" value="1824" />
     <option name="height" value="1336" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -330,18 +322,18 @@
       <workItem from="1518079779037" duration="13393000" />
       <workItem from="1518101207255" duration="15506000" />
       <workItem from="1518183806300" duration="9778000" />
-      <workItem from="1518199471002" duration="6933000" />
+      <workItem from="1518199471002" duration="7442000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="289645000" />
+    <option name="totallyTimeSpent" value="290154000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="6" y="23" width="1659" height="1336" extended-state="0" />
+    <frame x="6" y="23" width="1824" height="1336" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12881564" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11702718" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20734695" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
@@ -640,14 +632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buf_manager.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="59" column="46" lean-forward="false" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/flag_manager.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -659,17 +643,25 @@
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="715">
-          <caret line="74" column="48" lean-forward="true" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+          <caret line="74" column="48" lean-forward="false" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
           <folding>
             <element signature="e#892#916#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/buf_manager.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="877">
+          <caret line="59" column="46" lean-forward="false" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/prntf_unicode.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="571">
+          <caret line="97" column="9" lean-forward="true" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
           <folding />
         </state>
       </provider>

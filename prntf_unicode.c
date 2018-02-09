@@ -83,20 +83,17 @@ void	convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	else
 	{
 		find_len(unistr, spec, &symb, &bytes);
-		//printf("zero: %d, fwidth: %d, prec: %d\n", spec.flags.zero, spec.fwidth, spec.precision);
 		padd = 0;
-		if (spec.precision == -1 && spec.fwidth && printf("1\n"))
+		if (spec.precision == -1 && spec.fwidth)
 			padd = spec.fwidth - bytes;
-		else if (bytes && !(spec.precision % bytes) && spec.fwidth && printf("2\n"))
+		else if (bytes && !(spec.precision % bytes) && spec.fwidth)
 			padd = spec.fwidth - symb;
-		else if (spec.precision != -1 && spec.fwidth && printf("3\n"))
+		else if (spec.precision != -1 && spec.fwidth)
 		{
 			padd = (spec.fwidth - spec.precision);
-			if (bytes && spec.precision > 0 && bytes % spec.precision && printf("4\n"))
+			if (bytes && spec.precision > 0 && bytes % spec.precision)
 				padd += bytes - spec.precision - 1;
 		}
-				//printf("padd: %d\n", padd);
-		//printf("symb: %d, bytes: %d, padd: %d\n", symb, bytes, padd);
 		if (!spec.flags.minus)
 		{
 			if (spec.flags.zero && spec.precision == 0 && !symb)
