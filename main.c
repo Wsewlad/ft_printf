@@ -26,7 +26,7 @@ int		main(void)
 	//ret = 0;
 	//ret2 = -42;
 
-	/*ret = ft_printf("%4.3S\n", L"我是一只猫。");
+	ret = ft_printf("%4.3S\n", L"我是一只猫。");
 	ret2 = printf("%4.3S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
@@ -70,10 +70,9 @@ int		main(void)
 	ret2 = printf("%.4S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%15.4S\n", L"我是一只猫。");
-	ret2 = printf("%15.4S\n", L"我是一只猫。");
-	printf("ret1: %d\nret2: %d\n", ret, ret2);*/
+	ret = ft_printf("%15.*S\n", L"我是一只猫。");
+	ret2 = printf("%15.5S\n", L"我是一只猫。");
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	system("leaks a.out");
 	return (0);
 }

@@ -55,13 +55,23 @@ static void	push_flags(t_pfbuf **res, unsigned int *unistr, int prec)
 
 void 	find_len(unsigned int *unistr, t_spec_elem spec, int *symb, int *bytes)
 {
+	int buf;
+
 	*symb = 0;
 	*bytes = 0;
 	if (spec.precision != -1)
 	{
-		while (unistr[*symb] && *bytes <= spec.precision)
-			*bytes += count_bytes(unistr[(*symb)++]);
-		*symb = *bytes > spec.precision ? *symb - 1 : *symb;
+		while (unistr[*symb])
+		{
+			buf = count_bytes(unistr[*symb]);
+			if ((*bytes + buf) <= spec.precision)
+			{
+				*bytes += buf;
+				(*symb)++;
+			}
+			else
+				break;
+		}
 	}
 	else
 	{
@@ -74,8 +84,8 @@ void	convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 {
 	unsigned int	*unistr;
 	int				symb;
-	int 			padd;
 	int 			bytes;
+	int 			len;
 
 	unistr = va_arg(ap, unsigned int *);
 	if (!unistr)
@@ -83,29 +93,15 @@ void	convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	else
 	{
 		find_len(unistr, spec, &symb, &bytes);
-		padd = 0;
-		if (spec.precision == -1 && spec.fwidth)
-			padd = spec.fwidth - bytes;
-		else if (bytes && !(spec.precision % bytes) && spec.fwidth)
-			padd = spec.fwidth - symb;
-		else if (spec.precision != -1 && spec.fwidth)
+		len = bytes;
+		if (spec.flags.minus)
+			push_flags(res, unistr, symb);
+		while (len < spec.fwidth)
 		{
-			padd = (spec.fwidth - spec.precision);
-			if (bytes && spec.precision > 0 && bytes % spec.precision)
-				padd += bytes - spec.precision - 1;
+			fill_buf_chr(res, spec.flags.zero ? '0' : ' ');
+			len++;
 		}
 		if (!spec.flags.minus)
-		{
-			if (spec.flags.zero && spec.precision == 0 && !symb)
-				push_padding(res, padd > 0 ? padd : 0, spec, 1);
-			else
-				push_padding(res, padd > 0 ? padd : 0, spec, 0);
 			push_flags(res, unistr, symb);
-		}
-		else
-		{
-			push_flags(res, unistr, symb);
-			push_padding(res, padd > 0 ? padd : 0, spec, 0);
-		}
 	}
 }
