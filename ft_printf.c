@@ -12,11 +12,17 @@
 
 #include "libftprintf.h"
 
-int		prntf_parse(t_pfbuf **res, char *format, va_list ap, t_conv	*conv)
+int		prntf_parse(t_pfbuf **res, char *format, va_list ap/*, t_conv *conv*/)
 {
 	t_spec_elem		spec;
 	int				step;
 	int				i;
+	t_conv			conv[] = {{'s', &convert_str}, {'S', &convert_unistr}, \
+	{'p', &convert_ptr}, {'d', &convert_dibd}, {'D', &convert_dibd}, \
+	{'i', &convert_dibd}, {'o', &convert_unsigned}, {'O', &convert_bou}, \
+	{'u', &convert_unsigned}, {'U', &convert_bou}, {'x', &convert_unsigned}, \
+	{'X', &convert_unsigned}, {'c', &convert_chr}, {'C', &convert_unichr}, \
+	{'%', &convert_chr}, {'0', NULL}};
 
 	step = check_init_specification(format, &spec);
 	i = 0;
@@ -31,16 +37,16 @@ int		prntf_parse(t_pfbuf **res, char *format, va_list ap, t_conv	*conv)
 
 void	prntf_runner(t_pfbuf **res, char *format, va_list ap)
 {
-	int 	step;
-	t_conv	*conv;
+	int		step;
+//	t_conv	*conv;
 
-	conv = init_conversion();
+//	conv = init_conversion();
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			step = prntf_parse(res, format, ap, conv);
+			step = prntf_parse(res, format, ap/*, conv*/);
 			format += step;
 			if (!step)
 				return ;
@@ -51,7 +57,7 @@ void	prntf_runner(t_pfbuf **res, char *format, va_list ap)
 			format++;
 		}
 	}
-	ft_memdel((void**)&conv);
+//	ft_memdel((void**)&conv);
 }
 
 int		ft_printf(const char *restrict format, ...)

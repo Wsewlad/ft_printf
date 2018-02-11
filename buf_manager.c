@@ -30,12 +30,12 @@ t_pfbuf		*pf_bufnew(size_t size)
 	return (new_buf);
 }
 
-void	ft_bufadd(t_pfbuf **head, t_pfbuf *new)
+void	ft_bufadd(t_pfbuf **res, t_pfbuf *new)
 {
 	t_pfbuf *buf;
 
-	buf = *head;
-	if (*head && new)
+	buf = *res;
+	if (*res && new)
 	{
 		while (buf->next)
 			buf = buf->next;
@@ -43,7 +43,7 @@ void	ft_bufadd(t_pfbuf **head, t_pfbuf *new)
 	}
 }
 
-void	fill_buf_str(t_pfbuf **head, char *str, t_spec_elem spec)
+void	fill_buf_str(t_pfbuf **res, char *str, t_spec_elem spec)
 {
 	int len;
 	int padd;
@@ -55,25 +55,25 @@ void	fill_buf_str(t_pfbuf **head, char *str, t_spec_elem spec)
 	if (!spec.flags.minus)
 	{
 		if (spec.flags.zero && spec.precision == 0 && !len)
-			push_padding(head, padd, spec, 1);
+			push_padding(res, padd, spec, 1);
 		else
-			push_padding(head, padd, spec, 0);
-		push_str(head, len, str);
+			push_padding(res, padd, spec, 0);
+		push_str(res, len, str);
 	}
 	else
 	{
-		push_str(head, len, str);
-		push_padding(head, padd, spec, 0);
+		push_str(res, len, str);
+		push_padding(res, padd, spec, 0);
 	}
 }
 
-void	fill_buf_chr(t_pfbuf **head, char chr)
+void	fill_buf_chr(t_pfbuf **res, char chr)
 {
 	int 	i;
 	t_pfbuf *new;
 	t_pfbuf *crawler;
 
-	crawler = *head;
+	crawler = *res;
 	i = crawler->size;
 	if (crawler->size < BUF_SIZE_PF)
 	{
@@ -89,25 +89,25 @@ void	fill_buf_chr(t_pfbuf **head, char chr)
 	}
 }
 
-int		print_buf(t_pfbuf **head)
+int		print_buf(t_pfbuf **res)
 {
 	int 	len;
 	t_pfbuf *crawler;
 
 	len = 0;
-	crawler = *head;
+	crawler = *res;
 	while (crawler)
 	{
 		len += write(1, crawler->buf, crawler->size);
 		crawler = crawler->next;
 	}
-    while (*head)
+    while (*res)
     {
-        ft_strdel(&((*head)->buf));
-        crawler = (*head)->next;
-        free(*head);
-        *head = crawler;
+        ft_strdel(&((*res)->buf));
+        crawler = (*res)->next;
+        free(*res);
+        *res = crawler;
     }
-	*head = NULL;
+	*res = NULL;
 	return (len);
 }
