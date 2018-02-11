@@ -70,9 +70,19 @@ int		main(void)
 	ret2 = printf("%.4S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 
-	ret = ft_printf("%15.*S\n", L"我是一只猫。");
-	ret2 = printf("%15.5S\n", L"我是一只猫。");
+	ret = ft_printf("www %15.5S\n", L"我是一只猫。");
+	ret2 = printf("www %15.5S\n", L"我是一只猫。");
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	ret = ft_printf("%C\n", L"我");
+	ret2 = printf("%C\n", L"我");
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	ret = ft_printf("%c\n", 'c');
+	ret2 = printf("%c\n", 'c');
+	printf("ret1: %d\nret2: %d\n", ret, ret2);
+
+	printf("MB_CUR_MAX size: %d\n", MB_CUR_MAX);
 
 	return (0);
 }

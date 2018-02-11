@@ -65,7 +65,7 @@ void		get_symbol(t_pfbuf **res, unsigned int numb)
 	int				bytes;
 
 	bytes = count_bytes(numb);
-	if (bytes == 1)
+	if (bytes == 1 || MB_CUR_MAX == 1)
 		fill_buf_chr(res, (char)numb);
 	else if (bytes == 2)
 		get_two_bytes(res, numb);

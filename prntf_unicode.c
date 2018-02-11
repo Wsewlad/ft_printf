@@ -46,11 +46,8 @@ static void	push_flags(t_pfbuf **res, unsigned int *unistr, int prec)
 	int	i;
 
 	i = 0;
-	while(unistr[i] && prec)
-	{
+	while(unistr[i] && prec--)
 		get_symbol(res, unistr[i++]);
-		prec--;
-	}
 }
 
 void 	find_len(unsigned int *unistr, t_spec_elem spec, int *symb, int *bytes)
@@ -60,7 +57,6 @@ void 	find_len(unsigned int *unistr, t_spec_elem spec, int *symb, int *bytes)
 	*symb = 0;
 	*bytes = 0;
 	if (spec.precision != -1)
-	{
 		while (unistr[*symb])
 		{
 			buf = count_bytes(unistr[*symb]);
@@ -72,12 +68,9 @@ void 	find_len(unsigned int *unistr, t_spec_elem spec, int *symb, int *bytes)
 			else
 				break;
 		}
-	}
 	else
-	{
 		while (unistr[*symb])
 			*bytes += count_bytes(unistr[(*symb)++]);
-	}
 }
 
 void	convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap)
@@ -96,11 +89,8 @@ void	convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		len = bytes;
 		if (spec.flags.minus)
 			push_flags(res, unistr, symb);
-		while (len < spec.fwidth)
-		{
+		while (len++ < spec.fwidth)
 			fill_buf_chr(res, spec.flags.zero ? '0' : ' ');
-			len++;
-		}
 		if (!spec.flags.minus)
 			push_flags(res, unistr, symb);
 	}
