@@ -6,7 +6,7 @@
 /*   By: vfil <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 15:43:00 by vfil              #+#    #+#             */
-/*   Updated: 2018/01/15 16:43:48 by vfil             ###   ########.fr       */
+/*   Updated: 2018/02/11 13:39:25 by vfil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ char				*ft_llitoa(long long n);
 char				*ft_ulltoa(unsigned long long n);
 char				*ft_llitoa_base(long long ln, int base, int caps);
 char				*ft_ulltoa_base(unsigned long long ln, int base, int caps);
+int					ft_printf(const char *restrict format, ...);
 
 #endif

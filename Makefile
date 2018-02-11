@@ -12,7 +12,7 @@
 
 NAME	=	libftprintf.a
 
-LIBFTSRC    =	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
+SRC    =	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 			ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c \
 			ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c \
 			ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c \
@@ -28,13 +28,14 @@ LIBFTSRC    =	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 			ft_itoa_base.c get_next_line.c ft_chrjoin_free.c ft_strjoin_free.c \
 			ft_llitoa.c ft_ulltoa.c ft_llitoa_base.c ft_ullitoa_base.c
 
-LSRC    =   $(addprefix Libft/, $(LIBFTSRC))
+PFSRC	=	ft_printf.c check_init_specification.c check_init_specification2.c \
+            is_spec_elem.c prntf_chrstr.c prntf_numb.c prntf_unicode.c \
+            prntf_unicode2.c buf_manager.c flag_manager.c ulltoa_base_buf.c \
+            lltoa_buf.c
 
-SRC		=	ft_printf.c check_init_specification.c check_init_specification2.c \
-is_spec_elem.c prntf_chrstr.c prntf_numb.c prntf_unicode.c prntf_unicode2.c \
-buf_manager.c flag_manager.c ulltoa_base_buf.c lltoa_buf.c
+LSRC    =   $(addprefix ft_printf/, $(PFSRC))
 
-LOSRC   =   $(LIBFTSRC:.c=.o)
+LOSRC   =   $(PFSRC:.c=.o)
 
 OSRC	=	$(SRC:.c=.o)
 

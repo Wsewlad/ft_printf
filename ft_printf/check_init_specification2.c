@@ -17,8 +17,9 @@ void	check_init_modifiers(char *format, int *step, t_spec_elem *spec)
 	format += *step;
 	if (is_modifier(*format))
 	{
-		ft_bzero(spec->smod, 3);
 		spec->smod[0] = *format;
+		spec->smod[1] = '\0';
+		spec->smod[2] = '\0';
 		format++;
 		if (*(format - 1) == 'h' && *format == 'h')
 		{
@@ -42,33 +43,6 @@ void	check_init_specifier(char *format, int *step, t_spec_elem *spec)
 		spec->cletter = *format;
 		(*step)++;
 	}
-}
-
-t_conv	*init_conversion(void)
-{
-	t_conv			*res;
-	const t_conv	conversion[] = {
-			{'s', &convert_str}, // +
-			{'S', &convert_unistr}, // +
-			{'p', &convert_ptr}, // +
-			{'d', &convert_dibd}, // +
-			{'D', &convert_dibd}, // +
-			{'i', &convert_dibd}, // +
-			{'o', &convert_unsigned}, // +
-			{'O', &convert_bou}, // +
-			{'u', &convert_unsigned}, // +
-			{'U', &convert_bou}, // +
-			{'x', &convert_unsigned}, // +
-			{'X', &convert_unsigned}, // +
-			{'c', &convert_chr}, // +
-			{'C', &convert_unichr}, // +
-			{'%', &convert_chr}, // +
-			{'0', NULL}
-	};
-
-	res = malloc(sizeof(conversion));
-	ft_memcpy(res, conversion, sizeof(conversion));
-	return (res);
 }
 
 /*void	p(t_spec_elem *spec)

@@ -12,13 +12,13 @@
 
 #include "libftprintf.h"
 
-void	convert_unichr(t_pfbuf **res, t_spec_elem spec, va_list ap)
+void		convert_unichr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 {
 	if (spec.cletter)
 		get_symbol(res, va_arg(ap, unsigned int));
 }
 
-int 	count_bytes(unsigned int n)
+int			count_bytes(unsigned int n)
 {
 	int bits;
 	int bytes;
@@ -46,11 +46,12 @@ static void	push_flags(t_pfbuf **res, unsigned int *unistr, int prec)
 	int	i;
 
 	i = 0;
-	while(unistr[i] && prec--)
+	while (unistr[i] && prec--)
 		get_symbol(res, unistr[i++]);
 }
 
-void 	find_len(unsigned int *unistr, t_spec_elem spec, int *symb, int *bytes)
+void		find_len(unsigned int *unistr, t_spec_elem spec, \
+					int *symb, int *bytes)
 {
 	int buf;
 
@@ -66,19 +67,19 @@ void 	find_len(unsigned int *unistr, t_spec_elem spec, int *symb, int *bytes)
 				(*symb)++;
 			}
 			else
-				break;
+				break ;
 		}
 	else
 		while (unistr[*symb])
 			*bytes += count_bytes(unistr[(*symb)++]);
 }
 
-void	convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap)
+void		convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 {
 	unsigned int	*unistr;
 	int				symb;
-	int 			bytes;
-	int 			len;
+	int				bytes;
+	int				len;
 
 	unistr = va_arg(ap, unsigned int *);
 	if (!unistr)

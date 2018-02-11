@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-int		check_init_specification(char *format, t_spec_elem *spec)
+int		check_init_specification(char *format, t_spec_elem *spec, va_list ap)
 {
 	int	step;
 	int len;
@@ -34,7 +34,7 @@ int		check_init_specification(char *format, t_spec_elem *spec)
 	return (step);
 }
 
-void 	init_spec2zero(t_spec_elem *spec)
+void	init_spec2zero(t_spec_elem *spec)
 {
 	spec->flags.minus = 0;
 	spec->flags.plus = 0;
@@ -54,11 +54,11 @@ void	check_init_flags(char *format, int *step, t_spec_elem *spec)
 	{
 		if (*format == '-')
 			spec->flags.minus = 1;
-		else if (*format == '+')
-			spec->flags.plus = 1;
 		else if (*format == '0')
-			spec->flags.zero = 1;
+			spec->flags.plus = 1;
 		else if (*format == '#')
+			spec->flags.zero = 1;
+		else if (*format == '+')
 			spec->flags.hash = 1;
 		else if (*format == ' ')
 			spec->flags.space = 1;
@@ -97,7 +97,7 @@ void	check_init_precision(char *format, int *step, t_spec_elem *spec)
 		(*step)++;
 		if (*format != '-')
 			spec->precision = ft_atoi(format);
-		while(*format >= '0' && *format <= '9')
+		while (*format >= '0' && *format <= '9')
 		{
 			format++;
 			(*step)++;

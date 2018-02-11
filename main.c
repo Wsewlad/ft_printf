@@ -6,12 +6,13 @@
 /*   By: vfil <vfil@student.unit.ua>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 17:43:08 by vfil              #+#    #+#             */
-/*   Updated: 2018/01/12 17:43:10 by vfil             ###   ########.fr       */
+/*   Updated: 2018/02/11 13:39:16 by vfil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 #include <locale.h>
+#include <stdio.h>
 
 int		main(void)
 {

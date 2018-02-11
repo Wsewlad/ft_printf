@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libftprintf.h"
 
-int	find_ulen(unsigned long long un, int base)
+int			find_ulen(unsigned long long un, int base)
 {
 	int	len;
 
@@ -28,13 +27,13 @@ int	find_ulen(unsigned long long un, int base)
 	return (len);
 }
 
-void		push_unumb(t_pfbuf **res, int *base_caps, unsigned long long un,
-					   t_spec_elem spec)
+void		push_unumb(t_pfbuf **res, int *base_caps, unsigned long long un, \
+t_spec_elem spec)
 {
-	unsigned long long 	pow;
-	char 				ltr[24] = "0123456789abcdefABCDEF";
-	int 				len;
-	int 				prec;
+	unsigned long long	pow;
+	const char			ltr[24] = "0123456789abcdefABCDEF";
+	int					len;
+	int					prec;
 
 	len = find_ulen(un, base_caps[0]);
 	pow = 1;
@@ -51,15 +50,15 @@ void		push_unumb(t_pfbuf **res, int *base_caps, unsigned long long un,
 	pow = (!un && spec.precision == 0) ? 0 : pow;
 	while (pow)
 	{
-		fill_buf_chr(res, (base_caps[1] && (un / pow) > 9) ?
-						  ltr[(un / pow) + 6] : ltr[un / pow]);
+		fill_buf_chr(res, (base_caps[1] && (un / pow) > 9) ? \
+		ltr[(un / pow) + 6] : ltr[un / pow]);
 		un %= pow;
 		pow /= base_caps[0];
 	}
 }
 
-static void	push_flags(t_pfbuf **res, t_spec_elem spec, unsigned long long un,
-						  int *base_caps)
+static void	push_flags(t_pfbuf **res, t_spec_elem spec, unsigned long long un, \
+int *base_caps)
 {
 	if (spec.flags.hash && un && (base_caps[0] == 8 || base_caps[0] == 16))
 		fill_buf_chr(res, '0');
@@ -69,8 +68,8 @@ static void	push_flags(t_pfbuf **res, t_spec_elem spec, unsigned long long un,
 		fill_buf_chr(res, spec.cletter == 'x' ? 'x' : 'X');
 	if (!(!un && spec.precision != -1 && base_caps[0] == 8 && spec.flags.hash))
 	{
-		spec.flags.hash = (spec.flags.hash == 2 && spec.precision != -1) ? 0 :
-						  spec.flags.hash;
+		spec.flags.hash = (spec.flags.hash == 2 && spec.precision != -1) ? 0 : \
+							spec.flags.hash;
 		push_unumb(res, base_caps, un, spec);
 	}
 }
@@ -88,8 +87,8 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
 	else
 		spec.flags.hash = 0;
 	len = len + spec.flags.hash;
-	width = (spec.fwidth > len && (!spec.flags.zero || spec.flags.minus
-								   || spec.precision != -1)) ? spec.fwidth : len;
+	width = (spec.fwidth > len && (!spec.flags.zero || spec.flags.minus \
+			|| spec.precision != -1)) ? spec.fwidth : len;
 	if (spec.flags.minus)
 		push_flags(res, spec, un, base_caps);
 	while (width > len)
@@ -100,4 +99,3 @@ void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
 	if (!spec.flags.minus)
 		push_flags(res, spec, un, base_caps);
 }
-
