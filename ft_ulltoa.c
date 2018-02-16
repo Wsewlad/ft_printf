@@ -16,7 +16,7 @@ char		*ft_ulltoa(unsigned long long n)
 {
 	unsigned long long	i;
 	int					len;
-	char 				*str;
+	char				*str;
 
 	i = 1;
 	len = 0;

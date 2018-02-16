@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-void	convert_dibd(t_pfbuf **res, t_spec_elem spec, va_list ap)
+void	convert_dibd(t_list **res, t_spec_elem spec, va_list ap)
 {
 	if (spec.cletter == 'D')
 		lltoa_buf(res, va_arg(ap, long long), spec);
@@ -32,7 +32,7 @@ void	convert_dibd(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		lltoa_buf(res, va_arg(ap, size_t), spec);
 }
 
-void	convert_unsigned(t_pfbuf **res, t_spec_elem spec, va_list ap)
+void	convert_unsigned(t_list **res, t_spec_elem spec, va_list ap)
 {
 	int	base_caps[2];
 
@@ -58,7 +58,7 @@ void	convert_unsigned(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		ulltoa_base_buf(res, va_arg(ap, size_t), base_caps, spec);
 }
 
-void	convert_bou(t_pfbuf **res, t_spec_elem spec, va_list ap)
+void	convert_bou(t_list **res, t_spec_elem spec, va_list ap)
 {
 	int	base_caps[2];
 

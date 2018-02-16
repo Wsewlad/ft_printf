@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static void	get_two_bytes(t_pfbuf **res, unsigned int u)
+static void	get_two_bytes(t_list **res, unsigned int u)
 {
 	unsigned int	mask02;
 	unsigned char	p1;
@@ -25,7 +25,7 @@ static void	get_two_bytes(t_pfbuf **res, unsigned int u)
 	fill_buf_chr(res, (char)(((mask02 << 24) >> 24) | p2));
 }
 
-static void	get_three_bytes(t_pfbuf **res, unsigned int u)
+static void	get_three_bytes(t_list **res, unsigned int u)
 {
 	unsigned int	mask03;
 	unsigned char	p1;
@@ -41,7 +41,7 @@ static void	get_three_bytes(t_pfbuf **res, unsigned int u)
 	fill_buf_chr(res, (char)(((mask03 << 24) >> 24) | p3));
 }
 
-static void	get_four_bytes(t_pfbuf **res, unsigned int u)
+static void	get_four_bytes(t_list **res, unsigned int u)
 {
 	unsigned int	mask04;
 	unsigned char	p1;
@@ -60,7 +60,7 @@ static void	get_four_bytes(t_pfbuf **res, unsigned int u)
 	fill_buf_chr(res, (char)(((mask04 << 24) >> 24) | p4));
 }
 
-void		get_symbol(t_pfbuf **res, unsigned int numb)
+void		get_symbol(t_list **res, unsigned int numb)
 {
 	int				bytes;
 

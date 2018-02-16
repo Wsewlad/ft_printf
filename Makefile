@@ -12,7 +12,7 @@
 
 NAME	=	libftprintf.a
 
-SRC    =	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
+LSRC    =	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 			ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c \
 			ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c \
 			ft_strrchr.c ft_strstr.c ft_strnstr.c ft_strcmp.c ft_strncmp.c \
@@ -28,16 +28,16 @@ SRC    =	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 			ft_itoa_base.c get_next_line.c ft_chrjoin_free.c ft_strjoin_free.c \
 			ft_llitoa.c ft_ulltoa.c ft_llitoa_base.c ft_ullitoa_base.c
 
-PFSRC	=	ft_printf.c check_init_specification.c check_init_specification2.c \
+SRC	=	    ft_printf.c check_init_specification.c check_init_specification2.c \
             is_spec_elem.c prntf_chrstr.c prntf_numb.c prntf_unicode.c \
             prntf_unicode2.c buf_manager.c flag_manager.c ulltoa_base_buf.c \
-            lltoa_buf.c
+            lltoa_buf.c check_color.c
 
-LSRC    =   $(addprefix ft_printf/, $(PFSRC))
+PFSRC    =   $(addprefix ft_printf/, $(SRC))
 
-LOSRC   =   $(PFSRC:.c=.o)
+OSRC   =   $(SRC:.c=.o)
 
-OSRC	=	$(SRC:.c=.o)
+LOSRC	=	$(LSRC:.c=.o)
 
 MAKE	=	@make
 
@@ -47,8 +47,8 @@ FLAGS	=	-Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	@gcc $(FLAGS) -c $(SRC) $(LSRC)
-	@ar rc $(NAME) $(OSRC) $(LOSRC)
+	@gcc $(FLAGS) -c $(LSRC) $(PFSRC)
+	@ar rc $(NAME) $(LOSRC) $(OSRC)
 
 %.o : %.c
 	@gcc $(FLAGS) -c $<

@@ -11,15 +11,18 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
-void	push_padding(t_pfbuf **head, int len, t_spec_elem spec, int zero)
+void	push_padding(t_list **head, int len, t_spec_elem spec, int zero)
 {
 	if (zero)
+	{
 		while (len)
 		{
 			fill_buf_chr(head, '0');
 			len--;
 		}
+	}
 	else
 		while (len)
 		{
@@ -29,7 +32,7 @@ void	push_padding(t_pfbuf **head, int len, t_spec_elem spec, int zero)
 		}
 }
 
-void	push_str(t_pfbuf **head, int len, char *str)
+void	push_str(t_list **head, int len, char *str)
 {
 	while (*str && len)
 	{

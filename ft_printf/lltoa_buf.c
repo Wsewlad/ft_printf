@@ -27,7 +27,7 @@ static int	find_len(unsigned long long un)
 	return (len);
 }
 
-static void	push_numb(t_pfbuf **res, unsigned long long un, t_spec_elem spec, \
+static void	push_numb(t_list **res, unsigned long long un, t_spec_elem spec, \
 						int min)
 {
 	unsigned long long	pow;
@@ -55,7 +55,7 @@ static void	push_numb(t_pfbuf **res, unsigned long long un, t_spec_elem spec, \
 	}
 }
 
-static void	push_flags(t_pfbuf **res, t_spec_elem spec, int min, \
+static void	push_flags(t_list **res, t_spec_elem spec, int min, \
 						unsigned long long un)
 {
 	if (spec.flags.plus && !min)
@@ -73,7 +73,7 @@ static void	push_flags(t_pfbuf **res, t_spec_elem spec, int min, \
 	push_numb(res, un, spec, min);
 }
 
-void		lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec)
+void		lltoa_buf(t_list **res, long long n, t_spec_elem spec)
 {
 	int					len;
 	int					min;
@@ -84,7 +84,7 @@ void		lltoa_buf(t_pfbuf **res, long long n, t_spec_elem spec)
 	un = n < 0 ? -n : n;
 	len = (!un && !spec.precision) ? 0 : find_len(un);
 	spec.flags.plus = min ? 0 : spec.flags.plus;
-	spec.flags.space = min ? 0 : spec.flags.space;
+	spec.flags.space = min || spec.flags.plus ? 0 : spec.flags.space;
 	len = (spec.precision > len) ? spec.precision : len;
 	len = len + min + spec.flags.plus + spec.flags.space;
 	width = (spec.fwidth > len && (!spec.flags.zero || spec.flags.minus \

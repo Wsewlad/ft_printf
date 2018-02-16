@@ -6,13 +6,13 @@
 /*   By: vfil <vfil@student.unit.ua>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 17:42:46 by vfil              #+#    #+#             */
-/*   Updated: 2018/01/12 17:42:50 by vfil             ###   ########.fr       */
+/*   Updated: 2018/02/11 22:55:47 by vfil             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		prntf_parse(t_pfbuf **res, char *format, va_list ap)
+int		prntf_parse(t_list **res, char *format, va_list ap)
 {
 	t_spec_elem		spec;
 	int				step;
@@ -35,7 +35,7 @@ int		prntf_parse(t_pfbuf **res, char *format, va_list ap)
 	return (step);
 }
 
-void	prntf_runner(t_pfbuf **res, char *format, va_list ap)
+void	prntf_runner(t_list **res, char *format, va_list ap)
 {
 	int		step;
 
@@ -51,8 +51,13 @@ void	prntf_runner(t_pfbuf **res, char *format, va_list ap)
 		}
 		else if (*format)
 		{
-			fill_buf_chr(res, *format);
-			format++;
+			if (*format == '{' && *(format + 4) == '}')
+				format += check_color(res, format);
+			else
+			{
+				fill_buf_chr(res, *format);
+				format++;
+			}
 		}
 	}
 }
@@ -60,13 +65,17 @@ void	prntf_runner(t_pfbuf **res, char *format, va_list ap)
 int		ft_printf(const char *restrict format, ...)
 {
 	va_list ap;
-	t_pfbuf	*res;
+	t_list	*res;
+	t_list	*buf;
 	int		len;
 
-	res = pf_bufnew(BUF_SIZE_PF);
+	res = ft_lstnew("", BUF_SIZE_PF);
+	res->content_size = 0;
+	buf = res;
 	va_start(ap, format);
-	prntf_runner(&res, (char*)format, ap);
+	prntf_runner(&buf, (char*)format, ap);
 	va_end(ap);
+
 	len = print_buf(&res);
 	return (len);
 }

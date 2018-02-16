@@ -15,16 +15,17 @@
 void	ft_chrjoin_free(char **s1, char s2)
 {
 	char	*new;
-	char 	*s01;
+	char	*s01;
 	int		i;
 
 	new = NULL;
 	i = 0;
-	if (*s1 && s2){
+	if (*s1 && s2)
+	{
 		s01 = *s1;
-		if((new = ft_strnew(ft_strlen(*s1) + 1)))
+		if ((new = ft_strnew(ft_strlen(*s1) + 1)))
 		{
-			while(*s01)
+			while (*s01)
 			{
 				new[i++] = *s01;
 				s01++;

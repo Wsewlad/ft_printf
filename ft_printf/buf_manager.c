@@ -12,38 +12,7 @@
 
 #include "libftprintf.h"
 
-t_pfbuf		*pf_bufnew(size_t size)
-{
-	t_pfbuf	*new_buf;
-
-	new_buf = (t_pfbuf*)malloc(sizeof(t_list));
-	if (new_buf)
-	{
-		if ((new_buf->buf = (char*)malloc(sizeof(char) * size)))
-		{
-			new_buf->size = 0;
-			new_buf->next = NULL;
-		}
-		else
-			free(new_buf);
-	}
-	return (new_buf);
-}
-
-void		ft_bufadd(t_pfbuf **res, t_pfbuf *new)
-{
-	t_pfbuf *buf;
-
-	buf = *res;
-	if (*res && new)
-	{
-		while (buf->next)
-			buf = buf->next;
-		buf->next = new;
-	}
-}
-
-void		fill_buf_str(t_pfbuf **res, char *str, t_spec_elem spec)
+void		fill_buf_str(t_list **res, char *str, t_spec_elem spec)
 {
 	int len;
 	int padd;
@@ -67,43 +36,42 @@ void		fill_buf_str(t_pfbuf **res, char *str, t_spec_elem spec)
 	}
 }
 
-void		fill_buf_chr(t_pfbuf **res, char chr)
+void		fill_buf_chr(t_list **str, char chr)
 {
-	int		i;
-	t_pfbuf	*new;
-	t_pfbuf	*crawler;
+	char	*buf;
+	t_list	*new;
 
-	crawler = *res;
-	i = crawler->size;
-	if (crawler->size < BUF_SIZE_PF)
+	if (str)
 	{
-		crawler->buf[i] = chr;
-		crawler->size++;
-	}
-	else
-	{
-		new = pf_bufnew(BUF_SIZE_PF);
-		ft_bufadd(&crawler, new);
-		crawler = crawler->next;
-		fill_buf_chr(&crawler, chr);
+		if ((*str)->content_size == BUF_SIZE_PF)
+		{
+			new = ft_lstnew("", BUF_SIZE_PF);
+			new->content_size = 0;
+			(*str)->next = new;
+			*str = (*str)->next;
+			(*str)->content_size = 0;
+		}
+		buf = (char*)(*str)->content;
+		buf[(*str)->content_size] = chr;
+		(*str)->content_size++;
 	}
 }
 
-int			print_buf(t_pfbuf **res)
+int			print_buf(t_list **res)
 {
 	int		len;
-	t_pfbuf	*crawler;
+	t_list	*crawler;
 
 	len = 0;
 	crawler = *res;
 	while (crawler)
 	{
-		len += write(1, crawler->buf, crawler->size);
+		len += write(1, crawler->content, crawler->content_size);
 		crawler = crawler->next;
 	}
 	while (*res)
 	{
-		ft_strdel(&((*res)->buf));
+		ft_memdel(&((*res)->content));
 		crawler = (*res)->next;
 		free(*res);
 		*res = crawler;

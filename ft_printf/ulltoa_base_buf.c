@@ -27,7 +27,7 @@ int			find_ulen(unsigned long long un, int base)
 	return (len);
 }
 
-void		push_unumb(t_pfbuf **res, int *base_caps, unsigned long long un, \
+void		push_unumb(t_list **res, int *base_caps, unsigned long long un, \
 t_spec_elem spec)
 {
 	unsigned long long	pow;
@@ -57,7 +57,7 @@ t_spec_elem spec)
 	}
 }
 
-static void	push_flags(t_pfbuf **res, t_spec_elem spec, unsigned long long un, \
+static void	push_flags(t_list **res, t_spec_elem spec, unsigned long long un, \
 int *base_caps)
 {
 	if (spec.flags.hash && un && (base_caps[0] == 8 || base_caps[0] == 16))
@@ -74,7 +74,7 @@ int *base_caps)
 	}
 }
 
-void		ulltoa_base_buf(t_pfbuf **res, unsigned long long un,
+void		ulltoa_base_buf(t_list **res, unsigned long long un,
 							int *base_caps, t_spec_elem spec)
 {
 	int	len;

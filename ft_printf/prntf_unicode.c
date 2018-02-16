@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-void		convert_unichr(t_pfbuf **res, t_spec_elem spec, va_list ap)
+void		convert_unichr(t_list **res, t_spec_elem spec, va_list ap)
 {
 	if (spec.cletter)
 		get_symbol(res, va_arg(ap, unsigned int));
@@ -41,7 +41,7 @@ int			count_bytes(unsigned int n)
 	return (bytes);
 }
 
-static void	push_flags(t_pfbuf **res, unsigned int *unistr, int prec)
+static void	push_flags(t_list **res, unsigned int *unistr, int prec)
 {
 	int	i;
 
@@ -74,7 +74,7 @@ void		find_len(unsigned int *unistr, t_spec_elem spec, \
 			*bytes += count_bytes(unistr[(*symb)++]);
 }
 
-void		convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap)
+void		convert_unistr(t_list **res, t_spec_elem spec, va_list ap)
 {
 	unsigned int	*unistr;
 	int				symb;
@@ -90,8 +90,11 @@ void		convert_unistr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 		len = bytes;
 		if (spec.flags.minus)
 			push_flags(res, unistr, symb);
-		while (len++ < spec.fwidth)
+		while (len < spec.fwidth)
+		{
 			fill_buf_chr(res, spec.flags.zero ? '0' : ' ');
+			len++;
+		}
 		if (!spec.flags.minus)
 			push_flags(res, unistr, symb);
 	}

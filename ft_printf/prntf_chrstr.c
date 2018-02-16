@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-void		convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap)
+void		convert_chr(t_list **res, t_spec_elem spec, va_list ap)
 {
 	char c;
 
@@ -36,7 +36,7 @@ void		convert_chr(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	}
 }
 
-void		convert_str(t_pfbuf **res, t_spec_elem spec, va_list ap)
+void		convert_str(t_list **res, t_spec_elem spec, va_list ap)
 {
 	char	*str;
 
@@ -51,7 +51,7 @@ void		convert_str(t_pfbuf **res, t_spec_elem spec, va_list ap)
 	}
 }
 
-static void	push_flags(t_pfbuf **res, t_spec_elem spec, \
+static void	push_flags(t_list **res, t_spec_elem spec, \
 						unsigned long long un, int *base_caps)
 {
 	if (spec.precision == -1)
@@ -61,7 +61,7 @@ static void	push_flags(t_pfbuf **res, t_spec_elem spec, \
 	push_unumb(res, base_caps, un, spec);
 }
 
-void		convert_ptr(t_pfbuf **res, t_spec_elem spec, va_list ap)
+void		convert_ptr(t_list **res, t_spec_elem spec, va_list ap)
 {
 	int				base_caps[2];
 	int				len;

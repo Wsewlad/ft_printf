@@ -15,7 +15,7 @@
 void	ft_strjoin_free(char **s1, char *s2)
 {
 	char	*new;
-	char 	*s01;
+	char	*s01;
 	int		i;
 
 	new = NULL;
