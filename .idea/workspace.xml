@@ -11,28 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae8892b7-2d32-4288-ae27-2a6d916bfa50" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
-      <change beforePath="$PROJECT_DIR$/a.out" afterPath="$PROJECT_DIR$/a.out" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
-      <change beforePath="$PROJECT_DIR$/ft_chrjoin_free.c" afterPath="$PROJECT_DIR$/ft_chrjoin_free.c" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/buf_manager.c" afterPath="$PROJECT_DIR$/ft_printf/buf_manager.c" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/check_init_specification.c" afterPath="$PROJECT_DIR$/ft_printf/check_init_specification.c" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/check_init_specification2.c" afterPath="$PROJECT_DIR$/ft_printf/check_init_specification2.c" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/flag_manager.c" afterPath="$PROJECT_DIR$/ft_printf/flag_manager.c" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/ft_printf.c" afterPath="$PROJECT_DIR$/ft_printf/ft_printf.c" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/libftprintf.h" afterPath="$PROJECT_DIR$/ft_printf/libftprintf.h" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/lltoa_buf.c" afterPath="$PROJECT_DIR$/ft_printf/lltoa_buf.c" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/prntf_chrstr.c" afterPath="$PROJECT_DIR$/ft_printf/prntf_chrstr.c" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/prntf_numb.c" afterPath="$PROJECT_DIR$/ft_printf/prntf_numb.c" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/prntf_unicode.c" afterPath="$PROJECT_DIR$/ft_printf/prntf_unicode.c" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/prntf_unicode2.c" afterPath="$PROJECT_DIR$/ft_printf/prntf_unicode2.c" />
-      <change beforePath="$PROJECT_DIR$/ft_printf/ulltoa_base_buf.c" afterPath="$PROJECT_DIR$/ft_printf/ulltoa_base_buf.c" />
-      <change beforePath="$PROJECT_DIR$/ft_strjoin_free.c" afterPath="$PROJECT_DIR$/ft_strjoin_free.c" />
-      <change beforePath="$PROJECT_DIR$/ft_ulltoa.c" afterPath="$PROJECT_DIR$/ft_ulltoa.c" />
-      <change beforePath="$PROJECT_DIR$/main.c" afterPath="$PROJECT_DIR$/main.c" />
-    </list>
+    <list default="true" id="ae8892b7-2d32-4288-ae27-2a6d916bfa50" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,7 +39,7 @@
             <entry file="file://$PROJECT_DIR$/main.c">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="667">
-                  <caret line="185" column="30" lean-forward="false" selection-start-line="185" selection-start-column="30" selection-end-line="185" selection-end-column="30" />
+                  <caret line="185" column="54" lean-forward="false" selection-start-line="185" selection-start-column="54" selection-end-line="185" selection-end-column="54" />
                   <folding />
                 </state>
               </provider>
@@ -95,8 +74,8 @@
           <file leaf-file-name="check_color.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ft_printf/check_color.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="529">
-                  <caret line="23" column="18" lean-forward="true" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+                <state relative-caret-position="575">
+                  <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -199,8 +178,8 @@
         <option value="$PROJECT_DIR$/Makefile" />
         <option value="$PROJECT_DIR$/ft_printf/ft_printf.c" />
         <option value="$PROJECT_DIR$/ft_printf/libftprintf.h" />
-        <option value="$PROJECT_DIR$/main.c" />
         <option value="$PROJECT_DIR$/ft_printf/check_color.c" />
+        <option value="$PROJECT_DIR$/main.c" />
       </list>
     </option>
   </component>
@@ -465,16 +444,15 @@
       <workItem from="1518354549388" duration="17376000" />
       <workItem from="1518432005855" duration="6189000" />
       <workItem from="1518445119652" duration="507000" />
-      <workItem from="1518791558278" duration="7160000" />
+      <workItem from="1518791558278" duration="7397000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="338281000" />
+    <option name="totallyTimeSpent" value="338518000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="6" y="23" width="1584" height="1336" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1349968" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -484,7 +462,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979593" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19510204" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19510204" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32081634" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -703,18 +681,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.c">
+    <entry file="file://$PROJECT_DIR$/ft_printf/check_color.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="185" column="30" lean-forward="false" selection-start-line="185" selection-start-column="30" selection-end-line="185" selection-end-column="30" />
+        <state relative-caret-position="575">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ft_printf/check_color.c">
+    <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" column="18" lean-forward="true" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        <state relative-caret-position="667">
+          <caret line="185" column="54" lean-forward="false" selection-start-line="185" selection-start-column="54" selection-end-line="185" selection-end-column="54" />
           <folding />
         </state>
       </provider>
