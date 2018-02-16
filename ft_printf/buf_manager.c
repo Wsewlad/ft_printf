@@ -57,7 +57,7 @@ void		fill_buf_chr(t_list **str, char chr)
 	}
 }
 
-int			print_buf(t_list **res)
+int			print_buf(t_list **res, int fd)
 {
 	int		len;
 	t_list	*crawler;
@@ -66,7 +66,7 @@ int			print_buf(t_list **res)
 	crawler = *res;
 	while (crawler)
 	{
-		len += write(1, crawler->content, crawler->content_size);
+		len += write(fd, crawler->content, crawler->content_size);
 		crawler = crawler->next;
 	}
 	while (*res)

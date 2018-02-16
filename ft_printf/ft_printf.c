@@ -35,7 +35,7 @@ int		prntf_parse(t_list **res, char *format, va_list ap)
 	return (step);
 }
 
-void	prntf_runner(t_list **res, char *format, va_list ap)
+void	prntf_runner(t_list **res, char *format, va_list ap, int *fd)
 {
 	int		step;
 
@@ -51,9 +51,9 @@ void	prntf_runner(t_list **res, char *format, va_list ap)
 		}
 		else if (*format)
 		{
-			if (*format == '{' && *(format + 4) == '}')
-				format += check_color(res, format);
-			else
+			while (*format == '{')
+				format += check_color(res, format, fd, ap);
+			if (*format && *format != '%')
 			{
 				fill_buf_chr(res, *format);
 				format++;
@@ -68,14 +68,15 @@ int		ft_printf(const char *restrict format, ...)
 	t_list	*res;
 	t_list	*buf;
 	int		len;
+	int		fd;
 
+	fd = 1;
 	res = ft_lstnew("", BUF_SIZE_PF);
 	res->content_size = 0;
 	buf = res;
 	va_start(ap, format);
-	prntf_runner(&buf, (char*)format, ap);
+	prntf_runner(&buf, (char*)format, ap, &fd);
 	va_end(ap);
-
-	len = print_buf(&res);
+	len = print_buf(&res, fd);
 	return (len);
 }

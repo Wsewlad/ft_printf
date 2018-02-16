@@ -15,7 +15,6 @@
 
 # include "../libft.h"
 # include <stdarg.h>
-# include <stdio.h>
 
 # define BUF_SIZE_PF 64
 
@@ -30,8 +29,8 @@ typedef struct		s_flags
 
 typedef struct		s_clr
 {
-	char 			*tmp;
-	char 			*code;
+	char			*tmp;
+	char			*code;
 }					t_clr;
 
 typedef struct		s_spec_elem
@@ -80,9 +79,9 @@ void				convert_unichr(t_list **res, t_spec_elem spec, va_list ap);
 void				convert_unistr(t_list **res, t_spec_elem spec, va_list ap);
 int					count_bytes(unsigned int n);
 void				get_symbol(t_list **res, unsigned int numb);
-void				fill_buf_str(t_list **head, char *str, t_spec_elem spec);
-void				fill_buf_chr(t_list **head, char chr);
-int					print_buf(t_list **head);
+void				fill_buf_str(t_list **res, char *str, t_spec_elem spec);
+void				fill_buf_chr(t_list **res, char chr);
+int					print_buf(t_list **res, int fd);
 void				push_str(t_list **head, int len, char *str);
 void				push_padding(t_list **head, int len, t_spec_elem spec, \
 								int zero);
@@ -92,6 +91,7 @@ void				push_unumb(t_list **res, int *base_caps, \
 void				ulltoa_base_buf(t_list **res, unsigned long long un, \
 									int *base_caps, t_spec_elem spec);
 void				lltoa_buf(t_list **res, long long n, t_spec_elem spec);
-int					check_color(t_list **res, char *format);
+int					check_color(t_list **res, char *format, int *fd, \
+								va_list ap);
 
 #endif

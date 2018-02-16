@@ -18,6 +18,7 @@ int		main(void)
 {
 	int		ret;
 	int		ret2;
+	int 	fd;
 
 	char* l = setlocale(LC_ALL, "");
 
@@ -183,9 +184,12 @@ int		main(void)
 	printf("ret1: %d\nret2: %d\n", ret, ret2);
 	*/
 
-	ret = ft_printf("{bld}{blu}%s{eoc}{bld}{yel}%s{eoc}\n", "Hello, ", "World!!!");
-	ret2 = printf("{red}%s\n", "Hello!");
-	printf("ret1: %d\nret2: %d\n", ret, ret2);
+	// test bonus "fd"
+
+
+	fd = open("test", O_RDWR);
+	ret = ft_printf("{file}{bld}{grn}Test %s{eoc}", fd, "for fd\n");
+	printf("ret: %d\n", ret);
 
 	return (0);
 }
